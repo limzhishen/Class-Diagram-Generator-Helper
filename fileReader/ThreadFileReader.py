@@ -1,14 +1,14 @@
 from threading import Thread,Lock
-from customtkinter.windows import CTk
-from data.InterfaceReadFile import ReadFile
+from Component.OutputComponent import OutputComponent
+from fileReader.InterfaceReadFile import ReadFile
 from abc import abstractmethod
 from queue import Queue
 import time,logging
 
 
 class ThreadFileReader(ReadFile):
-    def __init__(self, gui: CTk, Full_path: dict, logging: logging, progress_line: int = 5):
-        super().__init__(gui, Full_path, logging, progress_line)
+    def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: logging, progress_line: int = 5):
+        super().__init__(output_textbox, Full_path, logging, progress_line)
         self.output_lock=Lock()
     def getTask(self,Full_path):
         jobs=Queue()
@@ -22,8 +22,8 @@ class ThreadFileReader(ReadFile):
         path=self.getTask(Full_path)
         self.totalfile=path.qsize()
         print("Total Queue in {}".format(self.totalfile))
-        title_line=self.gui.getline(self.gui.textbox)
-        self.gui.cursor_end_newline(self.gui.textbox)
+        title_line=self.output_textbox.getline()
+        self.output_textbox.cursor_end_newline()
         time.sleep(0.5)
         self.start_thread(thread,path,title_line)
 
@@ -33,7 +33,7 @@ class ThreadFileReader(ReadFile):
             file_Scan_Thread.start()
         #waiting for all thread end task
         path.join()
-        self.gui.cleanLine(self.progess_line,self.gui.textbox)
+        self.output_textbox.cleanLine(self.progress_line)
         print("All Task Have been done")
     
     def process_file(self,path,threadid,title_line):
@@ -53,10 +53,10 @@ class ThreadFileReader(ReadFile):
 
     def update_progress(self,title_line):
         title=f"Scanning File ({self.num}/{self.totalfile})"
-        self.gui.refresh_line(title_line,title,self.gui.textbox)
+        self.output_textbox.refresh_line(title_line,title)
         if(len(self.scan_details)>5):
             self.scan_details.pop(0)
-            self.gui.refresh_detail(self.progess_line,self.scan_details[-1],self.gui.textbox)
+            self.output_textbox.refresh_detail(self.progress_line,self.scan_details[-1])
         else:
             print(self.scan_details[-1])
 
