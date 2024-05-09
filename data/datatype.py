@@ -1,6 +1,8 @@
 from enum import Enum
 
-class_pattern=(r'\bclass\b\s+(\w+)(?:\(([^)]+)\))?:')
+python_class_pattern=(r'class\s+(.*?)\s*\((.*?)\)\s*:')
+python_method_pattern=(r'\s+def\s+(.*?)\s*\((.*?)\)\s*:')
+python_attributes_pattern=(r'\s+self.(.*)\s*=\s*(.*)')
 class class_type(Enum):
     Abstract="abstract"
     Interface="interface"

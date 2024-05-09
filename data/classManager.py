@@ -41,7 +41,8 @@ class classManger:
         print(self.base_dict)
     
     def add_extended_class(self,extended_class):
-        self.base_dict['extend']=extended_class
+        # self.base_dict['extend'] = extended_class if extended_class != "" else None
+        self.base_dict['extend'] = extended_class
     
     def add_implement_class(self,implement_class):
         self.base_dict['implement']=implement_class
@@ -51,7 +52,7 @@ class classManger:
         "name":"",
         "type":"",
         "access_type":""
-    }
+        }
         new_attributes_dict["name"]=name
         new_attributes_dict["type"]=type.value
         new_attributes_dict["access_type"]=access_type.value
@@ -62,7 +63,8 @@ class classManger:
         "name":"",
         "type":"",
         "parameter":[]
-    }
-        new_method_dict[type]=type.value
+        }
+        new_method_dict["name"]=name
+        new_method_dict["type"]=type.value
         new_method_dict["parameter"]=parameter
         self.base_dict["method"].append(new_method_dict)

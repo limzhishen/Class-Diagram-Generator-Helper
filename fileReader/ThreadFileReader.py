@@ -36,7 +36,7 @@ class ThreadFileReader(ReadFile):
         self.output_textbox.cleanLine(self.progress_line)
         print("All Task Have been done")
     
-    def process_file(self,path,threadid,title_line):
+    def process_file(self,path,thread_id,title_line):
         while not path.empty():
             detail=path.get()
             if(len(detail)>25):
@@ -44,11 +44,11 @@ class ThreadFileReader(ReadFile):
             else:
                 detail_messange=detail+" "*(25-len(detail))
             with self.output_lock:
-                scan_messange="Thread {}: Scanning '{}'".format(threadid,detail_messange)
+                scan_messange="Thread {}: Scanning '{}'".format(thread_id,detail_messange)
                 self.scan_details.append(scan_messange)
                 self.num +=1
                 self.update_progress(title_line)
-            self.process_logic(detail)
+            self.process_logic(detail,thread_id)
             path.task_done()
 
     def update_progress(self,title_line):
