@@ -1,13 +1,16 @@
-
-import logging
+from component.LoggingColorFormat import Changelogging
 from pathlib import Path
 import customtkinter
 from fileReader.pythonRead import pythonRead
 import os
 
-abc=pythonRead(customtkinter.CTk(),"",logging)
-filename="UnitTesting-GrabFile"
-filename="fileReader/filePath.py"
+log=Changelogging()
+abc=pythonRead(customtkinter.CTk(),"",log)
+filename="filePath.py"
 path=os.getcwd()
-filepath=os.path.join(path,filename)
+
+foldername="fileReader"
+filepath=os.path.join(path,foldername)
+filepath=os.path.join(filepath,filename)
+log.debug_red(filepath)
 abc.process_logic(filepath,thread_id=1)

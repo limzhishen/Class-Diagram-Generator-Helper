@@ -1,6 +1,8 @@
 from enum import Enum
+import re,os
 
 Last_FilePath_pattern= r"([^\/]+)\/"
+
 python_class_pattern=(r'class\s+(.*?)\s*\((.*?)\)\s*:')
 python_method_pattern=(r'\s+def\s+(.*?)\s*\((.*?)\)\s*:')
 python_attributes_pattern=(r'\s+self.(.*?)\s*=\s*(.*)')

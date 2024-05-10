@@ -33,7 +33,7 @@ class pythonRead (ThreadFileReader):
                     continue
             if class_found:
                 self.classManager.add_Filename(index)
-                self.logging.info_green("Writing File Thread %s"%thread_id)
+                self.logging.info_green("Thread %s Writing File "%thread_id)
                 self.classManager.write_file(thread_id)
             else:
                 self.logging.debug_yellow("Not a Meaning File: "+index)

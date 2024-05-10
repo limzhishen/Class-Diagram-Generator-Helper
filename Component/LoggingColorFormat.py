@@ -15,3 +15,5 @@ class Changelogging():
         self.logging.debug(f'\033[91m{messange}\033[0m')
     def info_green(self,messange):
         self.logging.info(f'\033[92m{messange}\033[0m')
+    def critical_red(self,messange):
+        self.logging.critical(f'\033[91{messange}\033[0m')

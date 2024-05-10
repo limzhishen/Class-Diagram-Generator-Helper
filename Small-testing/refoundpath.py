@@ -1,7 +1,13 @@
 import re
-
-text = "C:/Users/zhish/Desktop/iPrice/class-Diagram-Helper/testing/MoneyPrinterTurbo/app/config/__init__.py"
-pattern = r"([^\/]+)\/"
+import os
+from pathlib import Path
+text = os.getcwd()
+filname="abc.py"
+text=os.path.join(text,filname)
+text=Path(text)
+text=str(text)
+print(text)
+pattern =  r"([^\\]+)\\"
 
 match = re.search(pattern, text[::-1])
 

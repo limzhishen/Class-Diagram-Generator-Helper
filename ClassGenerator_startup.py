@@ -24,6 +24,7 @@ class ClassGenerator_startup(Application):
         file_thread.start()
     
     def file_process_thread(self):
+        print("---Scanning File----")
         File=Filepath(r"C:\Users\zhish\Desktop\iPrice\class-Diagram-Helper\UnitTesting_PythonFile",".py",self.logging)
         print("File Done Import")
         filereader=pythonRead(self.textbox,File.Full_path,self.logging)

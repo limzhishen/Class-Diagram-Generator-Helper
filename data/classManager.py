@@ -75,11 +75,11 @@ class classManger:
 
     def add_Filename(self,filePath):
         pattern = Last_FilePath_pattern
-        match=re.match(pattern,filePath)
-        self.base_dict["filename"]=match.group(1)[::-1]
+        match=re.search(pattern,filePath[::-1])
+        filename=match.group(1)[::-1]
+        self.base_dict["filename"]=filename
 
     def write_file(self,thread_id):
-
         file_name="class_Thread_{}.txt".format(thread_id)
         file_path=os.path.join(Temp_Save_Foldername,file_name)
         with open(file_path,"a+",encoding='utf-8')as file:
