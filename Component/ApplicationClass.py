@@ -13,7 +13,7 @@ class Application(CTk):
         self.logging=logging
         super().__init__()
         self.title("Class Generator Helper")
-        self.iconbitmap("Icon.ico")
+        self.iconbitmap("Component/Icon.ico")
 
 
 

@@ -6,6 +6,7 @@ python_method_pattern=(r'\s+def\s+(.*?)\s*\((.*?)\)\s*:')
 python_attributes_pattern=(r'\s+self.(.*?)\s*=\s*(.*)')
 
 Temp_Save_Foldername="TempThreadFile"
+Processed_Data_Filename="Combineded"
 
 class class_type(Enum):
     Abstract="abstract"
