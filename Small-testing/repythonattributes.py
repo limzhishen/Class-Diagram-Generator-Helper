@@ -1,8 +1,8 @@
 import re
 
-class_pattern=(r'\s+self.(.*)\s*=\s*(.*)')
+class_pattern=(r'\s+self.(.*?)\s*=\s*(.*)')
 
-line=("     self.manage  =   manaaa")
+line=(" self._redis = redis.StrictRedis(host=host, port=port, db=db, password=password)")
 abc=re.search(class_pattern,line,re.M|re.I)
 
 

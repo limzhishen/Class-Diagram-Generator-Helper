@@ -20,12 +20,17 @@ def start():
                 os.remove(os.path.join(root, name))
             for name in dirs:
                 os.rmdir(os.path.join(root, name))
-        os.makedirs(folder_path)
 
     # 在文件夹里创建文件
-    file_name = "pythfffffi.txt"
+    file_name = "pyfi.txt"
     file_path = os.path.join(folder_path, file_name)
 
     with open(file_path, "a+") as file:
         file.write("hello")
-start()
+
+# start()
+def writefile():
+    file_name = "new_folder2/pyfi.txt"
+    with open(file_name, "a+") as file:
+        file.write("hello")
+writefile()

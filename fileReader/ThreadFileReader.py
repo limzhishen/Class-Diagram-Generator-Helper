@@ -7,8 +7,8 @@ import time,logging
 
 
 class ThreadFileReader(ReadFile):
-    def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: logging, progress_line: int = 5):
-        super().__init__(output_textbox, Full_path, logging, progress_line)
+    def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: logging, progress_line: int = 5, testing: bool = False):
+        super().__init__(output_textbox, Full_path, logging, progress_line, testing)
         self.output_lock=Lock()
     def getTask(self,Full_path):
         jobs=Queue()
@@ -21,6 +21,7 @@ class ThreadFileReader(ReadFile):
         print("Waiting For Queue to complete")
         path=self.getTask(Full_path)
         self.totalfile=path.qsize()
+        self.logging.info("Total Queue in {}".format(self.totalfile))
         print("Total Queue in {}".format(self.totalfile))
         title_line=self.output_textbox.getline()
         self.output_textbox.cursor_end_newline()
@@ -45,9 +46,10 @@ class ThreadFileReader(ReadFile):
                 detail_messange=detail+" "*(25-len(detail))
             with self.output_lock:
                 scan_messange="Thread {}: Scanning '{}'".format(thread_id,detail_messange)
-                self.scan_details.append(scan_messange)
-                self.num +=1
-                self.update_progress(title_line)
+                if not self.testing:
+                    self.scan_details.append(scan_messange)
+                    self.num +=1
+                    self.update_progress(title_line)
             self.process_logic(detail,thread_id)
             path.task_done()
 
@@ -66,6 +68,6 @@ class ThreadFileReader(ReadFile):
         #     sys.stdout.write("\033[K")
 
     @abstractmethod
-    def process_logic(self,detail):
+    def process_logic(self,detail,thread_id):
         pass
 

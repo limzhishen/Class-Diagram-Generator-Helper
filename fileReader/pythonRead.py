@@ -8,28 +8,35 @@ import re,time
 
 
 class pythonRead (ThreadFileReader):
-    def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: logging, progress_line: int = 5):
-        super().__init__(output_textbox, Full_path, logging, progress_line)
+    def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: logging, progress_line: int = 5, testing: bool = False):
+        super().__init__(output_textbox, Full_path, logging, progress_line, testing)
         self.classManager=classManger()
 
     def process_logic(self, index,thread_id):
-        time.sleep(0.5)
-        with open(index,"r+") as file:
+        class_found=False
+        self.logging.debug("Now Processing File "+index)
+        with open(index,"r+",encoding="utf-8") as file:
             for line in file:
                 match_class=re.match(python_class_pattern,line)
                 if match_class:
                     self.class_process(match_class)
+                    class_found = True
                     continue
                 match_method=re.match(python_method_pattern,line)
                 if match_method:
                     self.method_process(match_method)
+                    class_found = True
                     continue
                 match_attributes=re.match(python_attributes_pattern,line)
                 if match_attributes:
                     self.attributes_process(match_attributes)
                     continue
-            self.classManager.printout()
-            self.classManager.write_file(thread_id)
+            if class_found:
+                self.classManager.add_Filename(index)
+                self.logging.debug("Writing File Thread %s"%thread_id)
+                self.classManager.write_file(thread_id)
+            else:
+                self.logging.debug("Not a Meaning File")
     
     def class_process(self,match):
         class_name=match.group(1)

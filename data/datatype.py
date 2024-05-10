@@ -1,8 +1,12 @@
 from enum import Enum
 
+Last_FilePath_pattern= r"([^\/]+)\/"
 python_class_pattern=(r'class\s+(.*?)\s*\((.*?)\)\s*:')
 python_method_pattern=(r'\s+def\s+(.*?)\s*\((.*?)\)\s*:')
-python_attributes_pattern=(r'\s+self.(.*)\s*=\s*(.*)')
+python_attributes_pattern=(r'\s+self.(.*?)\s*=\s*(.*)')
+
+Temp_Save_Foldername="TempThreadFile"
+
 class class_type(Enum):
     Abstract="abstract"
     Interface="interface"
