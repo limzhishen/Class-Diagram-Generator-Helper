@@ -1,13 +1,14 @@
 from threading import Thread,Lock
-from Component.OutputComponent import OutputComponent
+from component.OutputComponent import OutputComponent
+from component.LoggingColorFormat import Changelogging
 from fileReader.InterfaceReadFile import ReadFile
 from abc import abstractmethod
 from queue import Queue
-import time,logging
+import time
 
 
 class ThreadFileReader(ReadFile):
-    def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: logging, progress_line: int = 5, testing: bool = False):
+    def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: Changelogging, progress_line: int = 5, testing: bool = False):
         super().__init__(output_textbox, Full_path, logging, progress_line, testing)
         self.output_lock=Lock()
     def getTask(self,Full_path):
@@ -21,7 +22,7 @@ class ThreadFileReader(ReadFile):
         print("Waiting For Queue to complete")
         path=self.getTask(Full_path)
         self.totalfile=path.qsize()
-        self.logging.info("Total Queue in {}".format(self.totalfile))
+        self.logging.info_green("Total Queue in {}".format(self.totalfile))
         print("Total Queue in {}".format(self.totalfile))
         title_line=self.output_textbox.getline()
         self.output_textbox.cursor_end_newline()
@@ -34,7 +35,7 @@ class ThreadFileReader(ReadFile):
             file_Scan_Thread.start()
         #waiting for all thread end task
         path.join()
-        self.output_textbox.cleanLine(self.progress_line)
+        self.output_textbox.cleanLine(len(self.scan_details))
         print("All Task Have been done")
 
     def process_file(self,path,thread_id,title_line):

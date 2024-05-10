@@ -1,7 +1,7 @@
 from typing import Tuple
 from customtkinter import *
 from customtkinter.windows.widgets.font import CTkFont
-from Component.TextRedirector import OutputRedirector
+from component.TextRedirector import OutputRedirector
 
 class OutputComponent(CTkTextbox):
     def __init__(self, master: any, width: int = 650, height: int = 200, corner_radius: int | None = None, border_width: int | None = None, border_spacing: int = 3, bg_color: str | Tuple[str, str] = "transparent", fg_color: str | Tuple[str, str] | None = None, border_color: str | Tuple[str, str] | None = None, text_color: str | None = None, scrollbar_button_color: str | Tuple[str, str] | None = None, scrollbar_button_hover_color: str | Tuple[str, str] | None = None, font: tuple | CTkFont | None = None, activate_scrollbars: bool = True, **kwargs):

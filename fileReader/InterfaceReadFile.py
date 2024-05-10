@@ -1,10 +1,10 @@
 from abc import ABC,abstractmethod
-from Component.OutputComponent import OutputComponent
-import logging
+from component.OutputComponent import OutputComponent
+from component.LoggingColorFormat import Changelogging
 from data.FolderRefresh import flush_Save_Folder
 
 class ReadFile(ABC):
-    def __init__(self,output_textbox:OutputComponent,Full_path:dict,logging:logging,progress_line:int=5,testing:bool=False):
+    def __init__(self,output_textbox:OutputComponent,Full_path:dict,logging:Changelogging,progress_line:int=5,testing:bool=False):
         self.output_textbox=output_textbox
         self.Full_path=Full_path
         self.num=0

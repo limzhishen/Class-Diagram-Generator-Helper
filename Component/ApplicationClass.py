@@ -1,19 +1,14 @@
 from customtkinter import * 
-from fileReader.filePath import Filepath
-from fileReader.pythonRead import pythonRead
-from threading import Thread
-import logging
-
-logging.basicConfig(format='Date-Time : %(asctime)s : - %(message)s', level = logging.DEBUG)
+from component.LoggingColorFormat import Changelogging
 
 
 #Create Main Window
 class Application(CTk):
     def __init__(self):
-        self.logging=logging
+        self.logging=Changelogging()
         super().__init__()
         self.title("Class Generator Helper")
-        self.iconbitmap("Icon.ico")
+        self.iconbitmap("Component/Icon.ico")
 
 
 

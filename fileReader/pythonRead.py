@@ -1,20 +1,20 @@
 from customtkinter.windows import CTk
-from Component.OutputComponent import OutputComponent
+from component.OutputComponent import OutputComponent
+from component.LoggingColorFormat import Changelogging
 from fileReader.ThreadFileReader import ThreadFileReader
 from data.datatype import *
 from data.classManager import classManger
-import logging
 import re,time
 
 
 class pythonRead (ThreadFileReader):
-    def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: logging, progress_line: int = 5, testing: bool = False):
+    def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: Changelogging, progress_line: int = 5, testing: bool = False):
         super().__init__(output_textbox, Full_path, logging, progress_line, testing)
         self.classManager=classManger()
 
     def process_logic(self, index,thread_id):
         class_found=False
-        self.logging.debug("Now Processing File "+index)
+        self.logging.debug_blue("Now Processing File "+index)
         with open(index,"r+",encoding="utf-8") as file:
             for line in file:
                 match_class=re.match(python_class_pattern,line)
@@ -33,10 +33,10 @@ class pythonRead (ThreadFileReader):
                     continue
             if class_found:
                 self.classManager.add_Filename(index)
-                self.logging.debug("Writing File Thread %s"%thread_id)
+                self.logging.info_green("Writing File Thread %s"%thread_id)
                 self.classManager.write_file(thread_id)
             else:
-                self.logging.debug("Not a Meaning File")
+                self.logging.debug_yellow("Not a Meaning File: "+index)
 
     def class_process(self,match):
         class_name=match.group(1)
