@@ -5,14 +5,10 @@ from fileReader.pythonRead import pythonRead
 from threading import Thread
 from Component.ApplicationClass import Application
 
-
-
-
-
-class GenrateStarup(Application):
+class ClassGenerator_startup(Application):
     def __init__(self):
         super().__init__()
-        self.geometry("700x600")
+        self.geometry("700x600+500+600")
         self.titletex=CTkLabel(self,text="Class Generator Helper",font=("Arial",20))
         self.textbox = OutputComponent(self)
         self.startButon=CTkButton(self,text="Start Process",command=self.start_process) 
@@ -29,12 +25,12 @@ class GenrateStarup(Application):
         file_thread.start()
     
     def file_process_thread(self):
-        File=Filepath("C:\\Users\zhish\Desktop\JavaAssignmentforpresentation\src\POMSystem\Class",".java",self.logging)
+        File=Filepath(r"C:\Users\zhish\Desktop\iPrice\class-Diagram-Helper\testing\MoneyPrinterTurbo",".py",self.logging)
         print("File Done Import")
         filereader=pythonRead(self.textbox,File.Full_path,self.logging)
         filereader.process()
 
 if __name__ == '__main__':
-    app=GenrateStarup()
+    app=ClassGenerator_startup()
     set_appearance_mode("dark")
     app.mainloop()

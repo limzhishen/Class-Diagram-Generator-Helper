@@ -1,8 +1,13 @@
 from enum import Enum
 
+Last_FilePath_pattern= r"([^\/]+)\/"
 python_class_pattern=(r'class\s+(.*?)\s*\((.*?)\)\s*:')
 python_method_pattern=(r'\s+def\s+(.*?)\s*\((.*?)\)\s*:')
-python_attributes_pattern=(r'\s+self.(.*)\s*=\s*(.*)')
+python_attributes_pattern=(r'\s+self.(.*?)\s*=\s*(.*)')
+
+Temp_Save_Foldername="TempThreadFile"
+Processed_Data_Filename="Combineded"
+
 class class_type(Enum):
     Abstract="abstract"
     Interface="interface"
@@ -20,11 +25,9 @@ class method_type(Enum):
     Public="public"
     Protected="protected"
     Nothing=""
-    
+
 class attributes_access_type(Enum):
     Private="private"
     Public="public"
     Protected="protected"
     Nothing=""
-
-
