@@ -48,7 +48,6 @@ class ThreadFileReader(ReadFile):
             with self.output_lock:
                 scan_messange="Thread {}: Scanning '{}'".format(thread_id,detail_messange)
                 if not self.testing:
-                    print("Hello")
                     self.scan_details.append(scan_messange)
                     self.num +=1
                     self.update_progress(title_line)
