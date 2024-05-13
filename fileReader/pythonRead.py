@@ -12,20 +12,52 @@ class pythonRead (ThreadFileReader):
         super().__init__(output_textbox, Full_path, logging, progress_line, testing)
         self.classManager=classManger()
 
+    # def process_logic(self, index,thread_id):
+    #     class_found=False
+    #     self.logging.debug_blue("Now Processing File "+index)
+    #     with open(index,"r+",encoding="utf-8") as file:
+    #         for line in file:
+    #             match_class=re.match(python_class_pattern,line)
+    #             if match_class:
+    #                 self.class_process(match_class)
+    #                 class_found = True
+    #                 continue
+    #             match_method=re.match(python_method_pattern,line)
+    #             if match_method:
+    #                 self.method_process(match_method)
+    #                 class_found = True
+    #                 continue
+    #             match_attributes=re.match(python_attributes_pattern,line)
+    #             if match_attributes:
+    #                 self.attributes_process(match_attributes)
+    #                 continue
+    #         if class_found:
+    #             self.classManager.add_Filename(index)
+    #             self.logging.info_green("Thread %s Writing File "%thread_id)
+    #             self.classManager.write_file(thread_id)
+    #         else:
+    #             self.logging.debug_yellow("Not a Meaning File: "+index)
+    # Solve the multiline Parameter Read Problem
     def process_logic(self, index,thread_id):
         class_found=False
         self.logging.debug_blue("Now Processing File "+index)
+        content=''
         with open(index,"r+",encoding="utf-8") as file:
             for line in file:
+                if not content.startswith(("def", "class")):
+                    content=''
+                    content+=line.strip()
                 match_class=re.match(python_class_pattern,line)
                 if match_class:
                     self.class_process(match_class)
                     class_found = True
+                    content=''
                     continue
                 match_method=re.match(python_method_pattern,line)
                 if match_method:
                     self.method_process(match_method)
                     class_found = True
+                    content=''
                     continue
                 match_attributes=re.match(python_attributes_pattern,line)
                 if match_attributes:
@@ -37,6 +69,7 @@ class pythonRead (ThreadFileReader):
                 self.classManager.write_file(thread_id)
             else:
                 self.logging.debug_yellow("Not a Meaning File: "+index)
+
 
     def class_process(self,match):
         class_name=match.group(1)

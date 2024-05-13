@@ -6,4 +6,5 @@ remove_Combined_file()
 
 filepath=os.getcwd()
 filepath=os.path.join(filepath,Temp_Save_Foldername)
-remove_folder(filepath)
+if os.path.exists(filepath):
+    remove_folder(filepath)
