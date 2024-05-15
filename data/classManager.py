@@ -22,7 +22,7 @@ import os,logging,re
 #         "type":"",
 #         "access_type":""
 #     }
-class classManger:
+class classManger:  
     def __init__(self,):
         self.base_dict={
         "filename":"",

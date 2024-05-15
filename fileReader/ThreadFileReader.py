@@ -28,6 +28,7 @@ class ThreadFileReader(ReadFile):
         self.output_textbox.cursor_end_newline()
         time.sleep(0.5)
         self.start_thread(thread,path,title_line)
+        
 
     def start_thread(self,thread,path,title_line):
         for i in range(thread):

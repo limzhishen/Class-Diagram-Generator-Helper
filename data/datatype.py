@@ -9,6 +9,7 @@ python_attributes_pattern=(r'\s+self.(.*?)\s*=\s*(.*)')
 
 Temp_Save_Foldername="TempThreadFile"
 Processed_Data_Filename="Combineded_Data.txt"
+drawIo_Save_name="Class Diagram.drawio"
 
 class class_type(Enum):
     Abstract="abstract"
@@ -33,3 +34,25 @@ class attributes_access_type(Enum):
     Public="public"
     Protected="protected"
     Nothing=""
+
+#Cannot Use due to multithreading and dict in memory sharing type
+# base_dict={
+#         "name":"",
+#         "type":"",
+#         "implement":[],
+#         "extend":[],
+#         "method":[],
+#         "attributes":[]
+#     }
+
+# method_dict={
+#         "name":"",
+#         "type":"",
+#         "parameter":[]
+#     }
+
+# attributes_dict= {   
+#         "name":"",
+#         "type":"",
+#         "access_type":""
+#     }
