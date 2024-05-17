@@ -1,4 +1,3 @@
-from customtkinter.windows import CTk
 from component.OutputComponent import OutputComponent
 from component.LoggingColorFormat import Changelogging
 from fileReader.ThreadFileReader import ThreadFileReader
@@ -10,40 +9,17 @@ import re,time
 class pythonRead (ThreadFileReader):
     def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: Changelogging, progress_line: int = 5, testing: bool = False):
         super().__init__(output_textbox, Full_path, logging, progress_line, testing)
-        self.classManager=classManger()
 
-    # def process_logic(self, index,thread_id):
-    #     class_found=False
-    #     self.logging.debug_blue("Now Processing File "+index)
-    #     with open(index,"r+",encoding="utf-8") as file:
-    #         for line in file:
-    #             match_class=re.match(python_class_pattern,line)
-    #             if match_class:
-    #                 self.class_process(match_class)
-    #                 class_found = True
-    #                 continue
-    #             match_method=re.match(python_method_pattern,line)
-    #             if match_method:
-    #                 self.method_process(match_method)
-    #                 class_found = True
-    #                 continue
-    #             match_attributes=re.match(python_attributes_pattern,line)
-    #             if match_attributes:
-    #                 self.attributes_process(match_attributes)
-    #                 continue
-    #         if class_found:
-    #             self.classManager.add_Filename(index)
-    #             self.logging.info_green("Thread %s Writing File "%thread_id)
-    #             self.classManager.write_file(thread_id)
-    #         else:
-    #             self.logging.debug_yellow("Not a Meaning File: "+index)
     # Solve the multiline Parameter Read Problem
-    def process_logic(self, index,thread_id):
+    def process_logic(self, index,thread_id,class_manager:classManger):
+        self.classManager=class_manager
         class_found=False
-        self.logging.debug_blue("Now Processing File "+index)
+        self.logging.debug_blue(f"Now Processing File with {thread_id} "+index)
+        
         content=''
         with open(index,"r+",encoding="utf-8") as file:
             for line in file:
+                # self.logging.debug_yellow(str(thread_id)+"Check Status"+str(self.classManager.printout()))
                 if not content.startswith(("def", "class")):
                     content=''
                     content+=line.strip()
@@ -65,7 +41,9 @@ class pythonRead (ThreadFileReader):
                     continue
             if class_found:
                 self.classManager.add_Filename(index)
-                self.logging.info_green("Thread %s Writing File "%thread_id)
+                self.logging.info_green("Thread {} Writing File with {}".format(thread_id,self.classManager.filename))
+                #Some data will write in empty
+                self.logging.debug_yellow(str(thread_id)+str(self.classManager.printout()))
                 self.classManager.write_file(thread_id)
             else:
                 self.logging.debug_yellow("Not a Meaning File: "+index)

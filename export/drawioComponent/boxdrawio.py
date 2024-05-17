@@ -14,7 +14,8 @@ class titleText:
     def get_back(self):
         return(f"""<mxCell id="{self.id}" value="{self.name}" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
                         <mxGeometry x="330" y="280" width="160" height="164" as="geometry" />
-                    </mxCell>""")
+                    </mxCell>
+               """)
     def check_type(self,type):
         if type==class_type.Interface.value:
             self.name=_interface+self.name
@@ -33,6 +34,7 @@ class subText:
         self.name=name
         self.parent=parent
         self.y_axis=y_axis
+        
         
     
     def method_process(self,**kwargs):
@@ -74,7 +76,8 @@ class subText:
     def get_back(self):
         return(f""" <mxCell id="{self.id}" value="{self.name}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="{self.parent}" vertex="1">
                     <mxGeometry y="{self.y_axis}" width="160" height="26" as="geometry" />
-                </mxCell>""")
+                </mxCell>
+                """)
 # <mxCell id="2IQ6KFNbmM4y4lDrINHY-4" value="" style="line;strokeWidth=1;" vertex="1" parent="2IQ6KFNbmM4y4lDrINHY-2">
 #     <mxGeometry y="52" width="160" height="8" as="geometry" />
 # </mxCell>
@@ -88,5 +91,6 @@ class middle_line:
     def get_back(self):
         return( f"""<mxCell id="{self.id}" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="{self.parent}">
                         <mxGeometry y="{self.y_axis}" width="160" height="8" as="geometry" />
-                    </mxCell> """)
+                    </mxCell>
+                    """)
     

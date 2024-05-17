@@ -4,13 +4,15 @@ from component.LoggingColorFormat import Changelogging
 from fileReader.InterfaceReadFile import ReadFile
 from abc import abstractmethod
 from queue import Queue
+from data.classManager import classManger
 import time
 
 
 class ThreadFileReader(ReadFile):
     def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: Changelogging, progress_line: int = 5, testing: bool = False):
         super().__init__(output_textbox, Full_path, logging, progress_line, testing)
-        self.output_lock=Lock()
+        self.lock=Lock()
+        self.threads=[]
     def getTask(self,Full_path):
         jobs=Queue()
         for num,detail in Full_path.items():
@@ -32,10 +34,15 @@ class ThreadFileReader(ReadFile):
 
     def start_thread(self,thread,path,title_line):
         for i in range(thread):
+            #Every thread need instance a new class manager class
+            
             file_Scan_Thread=Thread(target=self.process_file,args=(path, i+1,title_line))
             file_Scan_Thread.start()
+            self.threads.append(file_Scan_Thread)
         #waiting for all thread end task
         path.join()
+        #this can prevent reqeust too many 
+        time.sleep(0.1)
         self.output_textbox.cleanLine(len(self.scan_details))
         print("All Task Have been done")
 
@@ -46,13 +53,15 @@ class ThreadFileReader(ReadFile):
                 detail_messange=detail[23:]+"..."
             else:
                 detail_messange=detail+" "*(25-len(detail))
-            with self.output_lock:
+            with self.lock:
                 scan_messange="Thread {}: Scanning '{}'".format(thread_id,detail_messange)
+                class_manager=classManger()
+                self.logging.debug_red(str(thread_id)+"_"+str(class_manager))
                 if not self.testing:
                     self.scan_details.append(scan_messange)
                     self.num +=1
                     self.update_progress(title_line)
-            self.process_logic(detail,thread_id)
+            self.process_logic(detail,thread_id,class_manager)
             path.task_done()
 
     def update_progress(self,title_line):
@@ -64,11 +73,6 @@ class ThreadFileReader(ReadFile):
         else:
             print(self.scan_details[-1])
 
-        # since the output move to tkinter so use text to delete
-        # for j in range(num):
-        #     sys.stdout.write("\033[F")
-        #     sys.stdout.write("\033[K")
-
     @abstractmethod
-    def process_logic(self,detail,thread_id):
+    def process_logic(self,detail,thread_id,class_manager):
         pass

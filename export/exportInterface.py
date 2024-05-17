@@ -22,13 +22,15 @@ class Export(ABC):
             self.logging.info_green("----Start Export----")
             print("----Start Export----")
             self.write_head()
-
+            count=0
             with open(Processed_Data_Filename,"r+",encoding="utf-8")as file:
                 for line in file:
                     if line.strip():
+                        count +=1
                         self.process(line)
             self.write_tail()
             self.logging.info_green("----Done Export----")
+            print(count)
             print("----Done Export----")
             self.remove_File()
         else:
@@ -44,7 +46,7 @@ class Export(ABC):
         with open(drawIo_Save_name,"a+",encoding="utf-8")as write_file:
             write_file.write(tail)
 
-    def checkexist_File()->bool:
+    def checkexist_File(self)->bool:
         if os.path.exists(Processed_Data_Filename):
             return True
         else:

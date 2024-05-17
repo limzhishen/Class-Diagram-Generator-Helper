@@ -5,7 +5,7 @@ Last_FilePath_pattern= r"([^\/]+)\/"
 
 python_class_pattern=(r'class\s+(.*?)\s*\((.*?)\)\s*:')
 python_method_pattern=(r'\s+def\s+(.*?)\s*\((.*?)\)\s*:')
-python_attributes_pattern=(r'\s+self.(.*?)\s*=\s*(.*)')
+python_attributes_pattern=(r'\s*self\.(\w+)\b')
 
 Temp_Save_Foldername="TempThreadFile"
 Processed_Data_Filename="Combineded_Data.txt"

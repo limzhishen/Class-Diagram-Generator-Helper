@@ -33,6 +33,7 @@ class classManger:
         "method":[],
         "attributes":[]
     }
+        self.filename=""
 
 
     def add_class_name(self,name):
@@ -42,7 +43,7 @@ class classManger:
         self.base_dict['type']=type.value
 
     def printout(self):
-        print(self.base_dict)
+        return(self.base_dict)
 
     def add_extended_class(self,extended_class):
         # self.base_dict['extend'] = extended_class if extended_class != "" else None
@@ -52,6 +53,8 @@ class classManger:
         self.base_dict['implement']=implement_class
 
     def add_attributes(self,name,type=attributes_type.Nothing,access_type=attributes_access_type.Nothing):
+        if any(attribute["name"] == name for attribute in self.base_dict["attributes"]):
+            return
         new_attributes_dict={   
         "name":"",
         "type":"",
@@ -78,6 +81,7 @@ class classManger:
         match=re.search(pattern,filePath[::-1])
         filename=match.group(1)[::-1]
         self.base_dict["filename"]=filename
+        self.filename=filename
 
     def write_file(self,thread_id):
         file_name="class_Thread_{}.txt".format(thread_id)
