@@ -1,8 +1,10 @@
 import re
 
-class_pattern=(r'class\s+(.*?)\s*\((.*?)\)\s*:\s*(.*)')
+class_pattern=(r'\s*class\s+(.*?)\s*(\((.*?)\))?\s*:\s*(.*)')
 
-line=("class jo(ABC,fsds):")
+
+# line=("class jo(ABC,fsds):")
+line=("class jo:")
 abc=re.match(class_pattern,line,re.M|re.I)
 
 

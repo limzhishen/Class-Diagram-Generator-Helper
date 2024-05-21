@@ -16,11 +16,13 @@ class Filepath():
         for file_path in Path(self.directory).rglob("*"):
             if "\.git" in str(file_path) or "/.git" in str(file_path):
                 continue
+            if "__pycache__" in str(file_path):
+                continue
             if file_path.is_file() and self.type in str(file_path):
                 count+=1
                 self.logging.debug_blue("Processing file: %s" %file_path)
                 self.Full_path[count]=file_path.as_posix()
-                
+        self.logging.info_green("Total have %d file"%count)
         print("Total have %d file"%count)
     # if save to file is need take again useless make another step
     # def FileWrite(self):

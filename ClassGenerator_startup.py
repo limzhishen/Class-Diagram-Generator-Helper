@@ -4,6 +4,7 @@ from component.OutputComponent import OutputComponent
 from fileReader.pythonRead import pythonRead
 from threading import Thread
 from component.ApplicationClass import Application
+from data.FolderRefresh import migration_To_one
 
 class ClassGenerator_startup(Application):
     def __init__(self):
@@ -25,10 +26,18 @@ class ClassGenerator_startup(Application):
     
     def file_process_thread(self):
         print("---Scanning File----")
-        File=Filepath(r"C:\Users\zhish\Desktop\iPrice\class-Diagram-Helper\UnitTesting_PythonFile",".py",self.logging)
+        File=Filepath(r"C:\Users\zhish\Desktop\iPrice\dalake",".py",self.logging)
         print("File Done Import")
         filereader=pythonRead(self.textbox,File.Full_path,self.logging)
         filereader.process()
+        #### File Migration#####
+        self.logging.info_green("Starting Migration")
+        print("----Migration-----")
+        migration_To_one()
+        print("Migration Done")
+        self.logging.info_green("Succesfull Migration")
+        #### File Migration#####
+
 
 if __name__ == '__main__':
     app=ClassGenerator_startup()
