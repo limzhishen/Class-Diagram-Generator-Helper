@@ -1,4 +1,4 @@
-from data.datatype import Temp_Save_Foldername, Processed_Data_Filename
+from data.datatype import Temp_Save_Foldername, Processed_Data_Filename,drawIo_Save_name,drawIO_backup_name
 import os,time
 
 def flush_Save_Folder():
@@ -58,5 +58,14 @@ def remove_Combined_file():
     filepath = os.path.join(current_directory, filename)
     if os.path.exists(filepath):
         os.remove(filepath)
+        
+def removeioFile():
+    filepath = os.path.join(os.getcwd(), drawIo_Save_name)
+    backfile= os.path.join(os.getcwd(), drawIO_backup_name)
+    if os.path.exists(filepath):
+        os.remove(filepath)
+    if os.path.exists(backfile):
+        os.remove(backfile)
+
     
 

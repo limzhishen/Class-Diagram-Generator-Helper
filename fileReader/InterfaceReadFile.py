@@ -16,7 +16,6 @@ class ReadFile(ABC):
         self.testing=testing
         #flush the save place 
         flush_Save_Folder()
-
     @abstractmethod
     def process(self,path):
         pass

@@ -14,7 +14,7 @@ tail="""
 """
 
 class Export(ABC):
-    def __init__(self,logging:Changelogging,removefile:bool=False):
+    def __init__(self,logging:Changelogging,removefile:bool):
         self.logging=logging
         self.removefile=removefile
     

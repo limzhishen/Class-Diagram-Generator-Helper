@@ -1,8 +1,8 @@
 from export.exportInterface import Export
-from export.drawioComponent.drawiobox import titleText,subText,middle_line
+from export.drawioComponent.boxdrawio import titleText,subText,middle_line
 from data.datatype import drawIo_Save_name,Processed_Data_Filename
 from component.LoggingColorFormat import Changelogging
-from export.drawioComponent.drawioarrow import arrow_drawio,arrow_type
+from export.drawioComponent.arrowdrawio import arrow_drawio,arrow_type
 from data.FolderRefresh import removeioFile
 #Must Have
 Y_SUBCOMPONENT=26
@@ -10,7 +10,7 @@ Y_SUBLINE=8
 
 class drawio_export(Export):
     
-    def __init__(self, logging: Changelogging, removefile: bool=False):
+    def __init__(self, logging: Changelogging, removefile: bool):
         super().__init__(logging, removefile)
         self.filename=""
         self.name=""
@@ -51,17 +51,17 @@ class drawio_export(Export):
         self.add_details(id,None,callback=self.add_middle_line)
         self.add_details(id,self.method,callback=self.add_method)
         if self.duplicateStatus:
-            self.logging.debug_red("Duplicate Class: "+self.filename+"  "+self.name)
-            self.add_one_subtext("Duplicate class name: "+self.filename+" "+self.name,id)
+            self.logging.debug_red("Duplicate Class: "+self.filename+"_"+self.name)
+            self.add_one_subtext("Duplicate class name: "+self.filename)
         if self.extend_duplicate:
-            self.logging.debug_red("extend Class: "+self.filename+"  "+self.name)
-            self.add_one_subtext("Extended Duplicate class name: "+self.filename+" "+self.name ,id)
+            self.logging.debug_red("extend Class: "+self.filename+"_"+self.name)
+            self.add_one_subtext("Extended Duplicate class name: "+self.filename)
         #Because the extends only direct to the class, so every of the same class will directed to the first one
         self.add_arrow(id)
         self.duplicateStatus=False
 
-    def add_one_subtext(self,name,id):
-        self.write_file(subText(id=(str(id)+"_"+str(self.get_new_num())),parent=id,y_axis=self.get_y_axis_subtext(),name=name,fontcolor="red").get_back())
+    def add_one_subtext(self,name):
+        self.write_file(subText(id=(id+"_"+str(self.get_new_num())),parent=id,y_axis=self.get_y_axis_subtext(),name=name).get_back())
 
     def add_middle_line(self,id,num):
         self.write_file(middle_line(id=num,parent=id,y_axis=self.y_axis).get_back())

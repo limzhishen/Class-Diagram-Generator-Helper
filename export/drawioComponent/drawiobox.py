@@ -29,13 +29,19 @@ class titleText:
 #     <mxGeometry y="26" width="160" height="26" as="geometry" />
 # </mxCell>
 class subText:
-    def __init__(self,id,name,parent,y_axis):
+    def __init__(self,id,name,parent,y_axis,fontcolor="#000000"):
         self.id=id
         self.name=name
         self.parent=parent
         self.y_axis=y_axis
-        
-        
+        self.font_color=self.getFontCode(fontcolor)
+    
+    def getFontCode(self,color):
+        match color:
+            case "red":
+                return "#ff0000"
+            case _:
+                return "#000000"
     
     def method_process(self,**kwargs):
          for key,value in kwargs.items():
@@ -74,7 +80,7 @@ class subText:
                 
         
     def get_back(self):
-        return(f""" <mxCell id="{self.id}" value="{self.name}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="{self.parent}" vertex="1">
+        return(f""" <mxCell id="{self.id}" value="{self.name}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor={self.font_color};" parent="{self.parent}" vertex="1">
                     <mxGeometry y="{self.y_axis}" width="160" height="26" as="geometry" />
                 </mxCell>
                 """)

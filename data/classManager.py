@@ -1,29 +1,9 @@
 from data.datatype import *
 import json
 import os,logging,re
-#Cannot Use due to multithreading and dict in memory sharing type
-# base_dict={
-#         "name":"",
-#         "type":"",
-#         "implement":[],
-#         "extend":[],
-#         "method":[],
-#         "attributes":[]
-#     }
 
-# method_dict={
-#         "name":"",
-#         "type":"",
-#         "parameter":[]
-#     }
-
-# attributes_dict= {   
-#         "name":"",
-#         "type":"",
-#         "access_type":""
-#     }
 class classManger:  
-    def __init__(self,):
+    def __init__(self):
         self.base_dict={
         "filename":"",
         "name":"",
@@ -34,8 +14,7 @@ class classManger:
         "attributes":[]
     }
         self.filename=""
-
-
+    
     def add_class_name(self,name):
         self.base_dict['name']=name
 
@@ -89,3 +68,29 @@ class classManger:
         with open(file_path,"a+",encoding='utf-8')as file:
             data=json.dumps(self.base_dict)
             file.write(data+"\n\n")
+
+
+
+
+
+#Cannot Use due to multithreading and dict in memory sharing type
+# base_dict={
+#         "name":"",
+#         "type":"",
+#         "implement":[],
+#         "extend":[],
+#         "method":[],
+#         "attributes":[]
+#     }
+
+# method_dict={
+#         "name":"",
+#         "type":"",
+#         "parameter":[]
+#     }
+
+# attributes_dict= {   
+#         "name":"",
+#         "type":"",
+#         "access_type":""
+#     }
