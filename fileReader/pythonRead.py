@@ -54,8 +54,10 @@ class pythonRead (ThreadFileReader):
         type=class_type.Class
         extend=[]
         if instance_info is not None:
-            extend = [info for info in instance_info.rstrip().split(",") if info != ""]
+            extend = [info.strip("()") for info in instance_info.rstrip().split(",") if info != ""]
             type = class_type.Abstract if "ABC" in extend else type
+        #remove ( or ) in the string
+        class_name=re.sub(r'\([^)]*\)', '', class_name).strip() 
         class_manager.add_class_name(class_name)
         class_manager.add_class_type(type)
         class_manager.add_extended_class(extended_class=extend)
