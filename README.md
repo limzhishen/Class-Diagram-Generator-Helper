@@ -3,8 +3,14 @@ This is a personal Interest Project
 
 ### For the drawio Component
 If got the same Class name :
--The Duplicate class name will mention in last component
--The class which extend Duplicate class name will mention in last component
+-The Duplicate class name will mention in last component and font-color will change to red
+-The class which extend Duplicate class name will mention in last component and font-color will change to red
+
+# Support programming language
+- Python (Multi-Thread as your computer can )
+
+# Export type
+- Draw Io (since can be easily configure but meet the repeat problem may will solve when i lack of brain)
 
 ### Create Reason (For newbie)
 While going a new company is hard to link the code espacially thier using the dependency injection and dependency invesion
