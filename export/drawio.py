@@ -1,6 +1,6 @@
 from export.exportThreading import ExportThread
 from export.drawioComponent.drawiobox import titleText,subText,middle_line
-from Component.LoggingColorFormat import Changelogging
+from component.LoggingColorFormat import Changelogging
 from data.FolderRefresh import removeioFile
 from export.drawioComponent.drawioMain import DrawIoMain
 

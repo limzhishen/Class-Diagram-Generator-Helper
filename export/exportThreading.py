@@ -1,4 +1,4 @@
-from Component.LoggingColorFormat import Changelogging
+from component.LoggingColorFormat import Changelogging
 from export.exportInterface import Export
 from data.datatype import drawIo_Save_name,Processed_Data_Filename,draw_head,draw_tail
 

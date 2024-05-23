@@ -11,6 +11,17 @@ Temp_Save_Foldername="TempThreadFile"
 Processed_Data_Filename="Combineded_Data.txt"
 drawIo_Save_name="Class Diagram.drawio"
 drawIO_backup_name=".$Class Diagram.drawio.bkp"
+Temp_Export_Folder="TempExportThread"
+
+draw_head="""<mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+"""
+draw_tail="""
+      </root>
+</mxGraphModel>
+"""
 
 class class_type(Enum):
     Abstract="abstract"

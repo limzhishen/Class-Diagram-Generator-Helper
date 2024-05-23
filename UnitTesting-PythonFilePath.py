@@ -7,8 +7,9 @@ from component.OutputComponent import OutputComponent
 
 
 # filename="UnitTesting_PythonFile"
-filename="Debug"
+
 # filename="fileReader"
+filename=r"C:\Users\zhish\Desktop\iPrice\dalake"
 path=os.getcwd()
 filepath=os.path.join(path,filename)
 File=Filepath(filepath,".py",Changelogging())

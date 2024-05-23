@@ -1,6 +1,6 @@
 from abc import ABC,abstractmethod
 from data.FolderRefresh import remove_Combined_file,check_Available
-from Component.LoggingColorFormat import Changelogging
+from component.LoggingColorFormat import Changelogging
 import json,os
 
 

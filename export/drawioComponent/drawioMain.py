@@ -84,7 +84,7 @@ class DrawIoMain:
         if self.extend !=[]:
             for class_extend in self.extend:
                 id=id+"_"+str(self.get_new_num())
-                self.logging.debug_blue(f"Extend Line: Source {id} Target{class_extend}")
+                self.logging.debug_blue(f"Extend Line: Source {id} Target {class_extend}")
                 self.write_file(arrow_drawio(id,arrow_type.extend,self.name,class_extend).get_back())
         if self.implement!=[]:
             for class_implement in self.implement:
