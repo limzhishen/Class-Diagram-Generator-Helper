@@ -19,7 +19,9 @@ def migration_To_one():
     
     filename = Processed_Data_Filename
     filepath = os.path.join(current_directory, filename)
-    
+    if not os.path.exists(folder_path):
+        print("Folder is not exist")
+        return
     if os.path.exists(filepath):
         os.remove(filepath)
     merge_folders(folder_path, filepath)

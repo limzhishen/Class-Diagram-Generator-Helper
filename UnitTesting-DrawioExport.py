@@ -4,7 +4,7 @@ import time
 
 
 starttime=time.time()
-abc=drawio_export(Changelogging(),max_woker=1)
+abc=drawio_export(Changelogging(),max_woker=5)
 abc.export()
 
 endtime=time.time()
