@@ -1,5 +1,11 @@
 from export.drawio import drawio_export
 from component.LoggingColorFormat import Changelogging
+import time
 
-abc=drawio_export(Changelogging())
+
+starttime=time.time()
+abc=drawio_export(Changelogging(),max_woker=5)
 abc.export()
+
+endtime=time.time()
+print(endtime-starttime)

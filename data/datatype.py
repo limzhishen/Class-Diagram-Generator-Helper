@@ -4,13 +4,24 @@ import re,os
 Last_FilePath_pattern= r"([^\/]+)\/"
 
 python_class_pattern=(r'\s*class\s+(.*?)\s*(\((.*?)\))?\s*:\s*(.*)')
-python_method_pattern=(r'\s*def\s+(.*?)\s*\((.*?)\)\s*.*:')
+python_method_pattern=(r'\s*def\s+(.*?)\s*\((.*)\)\s*.*:')
 python_attributes_pattern=(r'\s*self\.(\w+)\b')
 
 Temp_Save_Foldername="TempThreadFile"
 Processed_Data_Filename="Combineded_Data.txt"
 drawIo_Save_name="Class Diagram.drawio"
 drawIO_backup_name=".$Class Diagram.drawio.bkp"
+Temp_Export_Folder="TempExportThread"
+
+draw_head="""<mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+"""
+draw_tail="""
+      </root>
+</mxGraphModel>
+"""
 
 class class_type(Enum):
     Abstract="abstract"

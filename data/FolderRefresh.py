@@ -1,9 +1,9 @@
 from data.datatype import Temp_Save_Foldername, Processed_Data_Filename,drawIo_Save_name,drawIO_backup_name
 import os,time
 
-def flush_Save_Folder():
+def flush_Save_Folder(folder):
     current_directory = os.getcwd()
-    folder_name = Temp_Save_Foldername
+    folder_name = folder
     folder_path = os.path.join(current_directory, folder_name)
     
     if not os.path.exists(folder_path):
@@ -12,25 +12,28 @@ def flush_Save_Folder():
         remove_contents(folder_path)
         time.sleep(0.5)
 
-def migration_To_one():
+def migration_To_one(folder,file,check=True):
     current_directory = os.getcwd()
-    folder_name = Temp_Save_Foldername
+    folder_name = folder
     folder_path = os.path.join(current_directory, folder_name)
     
-    filename = Processed_Data_Filename
+    filename = file
     filepath = os.path.join(current_directory, filename)
-    
-    if os.path.exists(filepath):
-        os.remove(filepath)
+    if not os.path.exists(folder_path):
+        print("Folder is not exist")
+        return
+    if check:
+        if os.path.exists(filepath):
+            os.remove(filepath)
     merge_folders(folder_path, filepath)
     remove_folder(folder_path)
 
 def merge_folders(source_folder, target_file):
-    with open(target_file, 'a') as outfile:
+    with open(target_file, 'a+',encoding="utf-8") as outfile:
         for root, dirs, files in os.walk(source_folder):
             for file in files:
                 file_path = os.path.join(root, file)
-                with open(file_path, 'r') as infile:
+                with open(file_path, 'r',encoding="utf-8") as infile:
                     outfile.write(infile.read())
     
 def remove_folder(folder_path):
@@ -45,8 +48,8 @@ def remove_contents(folder_path):
         for name in dirs:
             os.rmdir(os.path.join(root, name))
 
-def check_Available():
-    filepath = os.path.join(os.getcwd(), Processed_Data_Filename)
+def check_Available(file):
+    filepath = os.path.join(os.getcwd(), file)
     if os.path.exists(filepath):
         return True
     else:

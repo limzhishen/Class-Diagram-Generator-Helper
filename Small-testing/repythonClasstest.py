@@ -4,7 +4,7 @@ class_pattern=(r'\s*class\s+(.*?)\s*(\((.*?)\))?\s*:\s*(.*)')
 
 
 # line=("class jo(ABC,fsds):")
-line=("class jo:")
+line=("class jo(abc,cac):")
 abc=re.match(class_pattern,line,re.M|re.I)
 
 
