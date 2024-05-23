@@ -1,7 +1,7 @@
 from abc import ABC,abstractmethod
 from component.OutputComponent import OutputComponent
 from component.LoggingColorFormat import Changelogging
-from data.FolderRefresh import flush_Save_Folder
+from data.FolderRefresh import flush_Save_Folder,Temp_Save_Foldername
 
 class ReadFile(ABC):
     def __init__(self,output_textbox:OutputComponent,Full_path:dict,logging:Changelogging,progress_line:int=5,testing:bool=False):
@@ -15,7 +15,7 @@ class ReadFile(ABC):
         #prevent GUi while Testing
         self.testing=testing
         #flush the save place 
-        flush_Save_Folder()
+        flush_Save_Folder(Temp_Save_Foldername)
     @abstractmethod
     def process(self,path):
         pass

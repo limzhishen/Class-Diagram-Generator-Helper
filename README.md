@@ -12,6 +12,10 @@ If got the same Class name :
 # Export type
 - Draw Io (since can be easily configure but meet the repeat problem may will solve when i lack of brain)
 
+## MultiThread Support
+-Python Read
+-Draw Io export
+
 ### Create Reason (For newbie)
 While going a new company is hard to link the code espacially thier using the dependency injection and dependency invesion
 

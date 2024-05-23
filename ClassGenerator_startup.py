@@ -4,7 +4,7 @@ from component.OutputComponent import OutputComponent
 from fileReader.pythonRead import pythonRead
 from threading import Thread
 from component.ApplicationClass import Application
-from data.FolderRefresh import migration_To_one
+from data.FolderRefresh import migration_To_one,Temp_Save_Foldername,Processed_Data_Filename
 
 class ClassGenerator_startup(Application):
     def __init__(self):
@@ -33,7 +33,7 @@ class ClassGenerator_startup(Application):
         #### File Migration#####
         self.logging.info_green("Starting Migration")
         print("----Migration-----")
-        migration_To_one()
+        migration_To_one(Temp_Save_Foldername,Processed_Data_Filename)
         print("Migration Done")
         self.logging.info_green("Succesfull Migration")
         #### File Migration#####

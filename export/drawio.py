@@ -1,7 +1,8 @@
 from export.exportThreading import ExportThread
 from export.drawioComponent.drawiobox import titleText,subText,middle_line
 from component.LoggingColorFormat import Changelogging
-from data.FolderRefresh import removeioFile
+from data.FolderRefresh import removeioFile,flush_Save_Folder
+from data.datatype import Temp_Export_Folder
 from export.drawioComponent.drawioMain import DrawIoMain
 
 
@@ -14,6 +15,7 @@ class drawio_export(ExportThread):
         self.duplicate=[]
         self.duplicateStatus=False
         self.extend_duplicate=False
+        flush_Save_Folder(Temp_Export_Folder)
         #remove the io file
         removeioFile()
 
@@ -28,8 +30,8 @@ class drawio_export(ExportThread):
         self.Allclassname.append(name)
 
 
-    def process(self,line):
-        drawio=DrawIoMain(self.get_dict(line),self.logging,callback_getnum=self.get_new_num)
+    def process(self,line,thread_id):
+        drawio=DrawIoMain(self.get_dict(line),self.logging,thread_id,callback_getnum=self.get_new_num)
         #Duplicate Class name will make draw io not working need override and save the status
         self.Deduplicate(drawio.name)
         self.check_extend(drawio)

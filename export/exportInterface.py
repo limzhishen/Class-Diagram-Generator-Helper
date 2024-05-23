@@ -1,5 +1,5 @@
 from abc import ABC,abstractmethod
-from data.FolderRefresh import remove_Combined_file,check_Available
+from data.FolderRefresh import remove_Combined_file,check_Available,Processed_Data_Filename
 from component.LoggingColorFormat import Changelogging
 import json,os
 
@@ -10,7 +10,7 @@ class Export(ABC):
         self.removefile=removefile
     
     def export(self):
-        if check_Available():
+        if check_Available(Processed_Data_Filename):
             self.logging.info_green("----Start Export----")
             print("----Start Export----")
             self.start_thread()

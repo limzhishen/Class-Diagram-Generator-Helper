@@ -1,14 +1,14 @@
 #Must Have
 from export.drawioComponent.drawioarrow import arrow_drawio,arrow_type
 from export.drawioComponent.drawiobox import titleText,subText,middle_line
-from data.datatype import drawIo_Save_name
+from data.datatype import Temp_Export_Folder
 from component.LoggingColorFormat import Changelogging
-import threading
+import threading,os
 Y_SUBCOMPONENT=26
 Y_SUBLINE=8
 
 class DrawIoMain:
-    def __init__(self,line_dict,logging:Changelogging,callback_getnum=None):
+    def __init__(self,line_dict,logging:Changelogging,thread_id,callback_getnum=None):
         self.y_axis=0
         self.filename=""
         self.name=""
@@ -21,7 +21,7 @@ class DrawIoMain:
         #call back to get the total num all thread
         self.get_new_num=callback_getnum
         self.logging=logging
-        self.lock = threading.Lock()
+        self.thread_id=thread_id
 
     def get_item_in_dict(self,line_dict):
         self.filename=line_dict["filename"]
@@ -71,9 +71,10 @@ class DrawIoMain:
             self.get_y_axis_subtext()
 
     def write_file(self,details):
-        with self.lock:
-            with open(drawIo_Save_name,"a+",encoding="utf-8")as write_file:
-                write_file.write(details)
+        filename="export_Thread_"+str(self.thread_id)+".drawio"
+        filepath=os.path.join(Temp_Export_Folder,filename)
+        with open(filepath,"a+",encoding="utf-8")as write_file:
+            write_file.write(details)
 
     
 

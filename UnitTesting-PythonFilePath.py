@@ -8,8 +8,7 @@ from component.OutputComponent import OutputComponent
 
 # filename="UnitTesting_PythonFile"
 
-# filename="fileReader"
-filename=r"C:\Users\zhish\Desktop\iPrice\dalake"
+filename="fileReader"
 path=os.getcwd()
 filepath=os.path.join(path,filename)
 File=Filepath(filepath,".py",Changelogging())
