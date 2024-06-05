@@ -31,28 +31,34 @@ class classManger:
     def add_implement_class(self,implement_class):
         self.base_dict['implement']=implement_class
 
-    def add_attributes(self,name,type=attributes_type.Nothing,access_type=attributes_access_type.Nothing):
+    def add_attributes(self,name,type="",access_type=attributes_access_type.Nothing,other=""):
         if any(attribute["name"] == name for attribute in self.base_dict["attributes"]):
             return
         new_attributes_dict={   
         "name":"",
         "type":"",
-        "access_type":""
+        "access_type":"",
+        "other":""
         }
         new_attributes_dict["name"]=name
-        new_attributes_dict["type"]=type.value
+        new_attributes_dict["type"]=type
         new_attributes_dict["access_type"]=access_type.value
+        new_attributes_dict["other"]=other
         self.base_dict["attributes"].append(new_attributes_dict)
 
-    def add_method(self,name,type=method_type.Nothing,parameter=[]):
+    def add_method(self,name,access_type=method_access_type.Nothing,parameter=[],return_type="",type=method_type.Nothing):
         new_method_dict={
         "name":"",
         "type":"",
-        "parameter":[]
+        "method_access_type":"",
+        "parameter":[],
+        "return":""
         }
         new_method_dict["name"]=name
-        new_method_dict["type"]=type.value
+        new_method_dict["access_type"]=access_type.value
         new_method_dict["parameter"]=parameter
+        new_method_dict["return"]=return_type
+        new_method_dict["type"]=type.value
         self.base_dict["method"].append(new_method_dict)
 
     def add_Filename(self,filePath):

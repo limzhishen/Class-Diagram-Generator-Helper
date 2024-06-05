@@ -1,12 +1,12 @@
 from component.OutputComponent import OutputComponent
 from component.LoggingColorFormat import Changelogging
-from fileReader.ThreadFileReader import ThreadFileReader
+from fileReader.ThreadFileReader import Thread_File_Reader
 from data.datatype import *
 from data.classManager import classManger
 import re,time
 
 
-class pythonRead (ThreadFileReader):
+class python_Read (Thread_File_Reader):
     def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: Changelogging, progress_line: int = 5, testing: bool = False,methodwithoutclass:bool=False):
         super().__init__(output_textbox, Full_path, logging, progress_line, testing)
         self.methodwithoutclass=methodwithoutclass
@@ -41,10 +41,10 @@ class pythonRead (ThreadFileReader):
             if class_found:
                 class_manager.add_Filename(index)
                 self.logging.info_green("Thread {} Writing File with {}".format(thread_id,class_manager.filename))
-                #Some data will write in empty
                 self.logging.debug_yellow(str(thread_id)+str(class_manager.printout()))
                 class_manager.write_file(thread_id)
             else:
+                #Some data will write in empty
                 self.logging.debug_yellow("Not a Meaning File: "+index)
 
 
