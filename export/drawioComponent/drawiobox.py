@@ -1,4 +1,4 @@
-from data.datatype import class_type,method_type,attributes_access_type
+from data.datatype import class_type,method_access_type,attributes_access_type
 # """
 # <mxCell id="2" value="Person" style="swimlane;fontStyle=1;childLayout=stackLayout;" parent="1" vertex="1">
 #     <mxGeometry x="330" y="280" width="160" height="164" as="geometry" />
@@ -6,6 +6,7 @@ from data.datatype import class_type,method_type,attributes_access_type
 # """
 _interface="&lt;&lt;interface&gt;&gt;&#xa;"
 _abstarct="&lt;&lt;Abstract&gt;&gt;&#xa;"
+_final="&lt;&lt;Final&gt;&gt;&#xa;"
 class titleText:
     def __init__(self,id,name,type):
         self.id=id
@@ -21,6 +22,8 @@ class titleText:
             self.name=_interface+self.name
         elif type==class_type.Abstract.value:
             self.name=_abstarct+self.name
+        elif type==class_type.Final.value:
+            self.name=_final+self.name
         elif type==class_type.Class.value:
             pass
        
@@ -44,21 +47,29 @@ class subText:
                 return "#000000"
     
     def method_process(self,**kwargs):
-         for key,value in kwargs.items():
+        for key,value in kwargs.items():
             if key=="parameter" and value!="":
                 self.name=f"{self.name} ({', '.join(value)})"
-            if key=="type":
-                if value==method_type.Private.value:
+            if key=="access_type":
+                if value==method_access_type.Private.value:
                     self.name="- "+self.name
                     continue
-                elif value==method_type.Public.value:
+                elif value==method_access_type.Public.value:
                     self.name="+ "+self.name
                     continue
-                elif value == method_type.Protected.value:
+                elif value == method_access_type.Protected.value:
                     self.name="# "+self.name
                     continue
                 else:
                     self.name="+ "+self.name
+            if key=="return" and value!="":
+                self.name=self.name+": "+str(value)
+        self.name=self.replace_data(self.name)
+    #Replace <> to &lt,&gt
+    def replace_data(self,name):
+        name=name.replace("<","&lt;")
+        name=name.replace(">","&gt;")
+        return name
                 
                 
     def attributes_process(self,**kwargs):
@@ -77,6 +88,7 @@ class subText:
                     continue
                 else:
                     self.name="+ "+self.name
+        self.name=self.replace_data(self.name)
                 
         
     def get_back(self):

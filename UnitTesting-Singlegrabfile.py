@@ -1,16 +1,17 @@
 from component.LoggingColorFormat import Changelogging
 from pathlib import Path
 import customtkinter
-from fileReader.pythonRead import pythonRead
+from fileReader.pythonRead import python_Read
+from fileReader.javaRead import java_Read
 from data.classManager import classManger
 import os
 
 log=Changelogging()
-abc=pythonRead(customtkinter.CTk(),"",log)
-filename="ga_bi_conversions.py"
+abc=java_Read(customtkinter.CTk(),"",log)
+filename="User.java"
 path=os.getcwd()
 
-foldername="Debug/dwh_sync"
+foldername="Testing-Java/Class"
 filepath=os.path.join(path,foldername)
 filepath=os.path.join(filepath,filename)
 log.debug_red(filepath)
