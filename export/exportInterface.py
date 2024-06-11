@@ -1,13 +1,16 @@
 from abc import ABC,abstractmethod
 from data.FolderRefresh import remove_Combined_file,check_Available,Processed_Data_Filename
 from component.LoggingColorFormat import Changelogging
+from component.OutputComponent import OutputComponent
 import json,os
 
 
 class Export(ABC):
-    def __init__(self,logging:Changelogging,removefile:bool=False):
+    def __init__(self,output_textbox:OutputComponent,logging:Changelogging,max_worker:int=3,removefile:bool=True):
+        self.output_textbox=output_textbox
         self.logging=logging
         self.removefile=removefile
+        self.max_worker=max_worker
     
     def export(self):
         if check_Available(Processed_Data_Filename):

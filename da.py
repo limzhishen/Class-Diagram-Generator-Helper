@@ -1,13 +1,3 @@
-abc={
-    "da":{
-        "UFO":{"ads","add"},
-        "EDO":{"aaa","bbb"},
-    },
-    "ga":{
-        "UFO":{"ads","add"},
-        "EDO":{"aaa","bbb"},
-    }
-}
-
-for a in abc["da"]:
-    print(a)
+from data.classManager import classManger
+class_manager=classManger()
+print(class_manager.check_class_name())

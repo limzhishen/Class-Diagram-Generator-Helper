@@ -7,9 +7,8 @@ import re,time
 
 
 class python_Read (Thread_File_Reader):
-    def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: Changelogging, progress_line: int = 5, testing: bool = False,methodwithoutclass:bool=False):
-        super().__init__(output_textbox, Full_path, logging, progress_line, testing)
-        self.methodwithoutclass=methodwithoutclass
+    def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: Changelogging, methodwithoutclass: bool = False, progress_line: int = 5, testing: bool = False):
+        super().__init__(output_textbox, Full_path, logging, methodwithoutclass, progress_line, testing)
     # Solve the multiline Parameter Read Problem
     def process_logic(self, index,thread_id,class_manager:classManger):
         class_found=False
@@ -17,12 +16,17 @@ class python_Read (Thread_File_Reader):
         content=''
         with open(index,"r+",encoding="utf-8") as file:
             for line in file:
-                # self.logging.debug_yellow(str(thread_id)+"Check Status"+str(self.classManager.printout()))
                 if not content.startswith(("def", "class")):
                     content=''
                 content+=line.strip()
+                
                 match_class=re.match(python_class_pattern,content)
                 if match_class:
+                    #Some class may contain more than one class
+                    if class_manager.check_class_name():
+                        self.write_file(thread_id,class_manager)
+                        class_manager=classManger()
+                    class_manager.add_Filename(index)
                     self.class_process(match_class,class_manager)
                     class_found = True
                     content=''
@@ -39,14 +43,15 @@ class python_Read (Thread_File_Reader):
                     self.attributes_process(match_attributes,class_manager)
                     continue
             if class_found:
-                class_manager.add_Filename(index)
-                self.logging.info_green("Thread {} Writing File with {}".format(thread_id,class_manager.filename))
-                self.logging.debug_yellow(str(thread_id)+str(class_manager.printout()))
-                class_manager.write_file(thread_id)
+                self.write_file(thread_id,class_manager)
             else:
                 #Some data will write in empty
                 self.logging.debug_yellow("Not a Meaning File: "+index)
 
+    def write_file(self,thread_id,class_manager):
+        self.logging.info_green("Thread {} Writing File with {}".format(thread_id,class_manager.filename))
+        self.logging.debug_yellow(str(thread_id)+str(class_manager.printout()))
+        class_manager.write_file(thread_id)
 
     def class_process(self,match,class_manager:classManger):
         class_name=match.group(1)

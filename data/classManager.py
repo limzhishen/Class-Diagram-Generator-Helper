@@ -15,6 +15,9 @@ class classManger:
     }
         self.filename=""
     
+    def check_class_name(self)->bool:
+        return bool(self.base_dict['name'])
+    
     def add_class_name(self,name):
         self.base_dict['name']=name
 
