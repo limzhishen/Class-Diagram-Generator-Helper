@@ -9,8 +9,8 @@ import time,threading
 
 
 class Thread_File_Reader(ReadFile):
-    def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: Changelogging, progress_line: int = 5, testing: bool = False):
-        super().__init__(output_textbox, Full_path, logging, progress_line, testing)
+    def __init__(self, output_textbox: OutputComponent, Full_path: dict, logging: Changelogging, methodwithoutclass: bool = False, progress_line: int = 5, testing: bool = False):
+        super().__init__(output_textbox, Full_path, logging, methodwithoutclass, progress_line, testing)
         self.lock=Lock()
 
        

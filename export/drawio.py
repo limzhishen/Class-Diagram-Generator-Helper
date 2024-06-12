@@ -1,3 +1,4 @@
+from component.OutputComponent import OutputComponent
 from export.exportThreading import ExportThread
 from export.drawioComponent.drawiobox import titleText,subText,middle_line
 from component.LoggingColorFormat import Changelogging
@@ -8,8 +9,8 @@ from export.drawioComponent.drawioMain import DrawIoMain
 
 class drawio_export(ExportThread):
     
-    def __init__(self, logging: Changelogging, removefile: bool = False, max_woker: int = 3):
-        super().__init__(logging, removefile, max_woker)   
+    def __init__(self, output_textbox: OutputComponent, logging: Changelogging, max_worker: int = 3, removefile: bool = True):
+        super().__init__(output_textbox, logging, max_worker, removefile) 
         self.num=0
         self.Allclassname=[]
         self.duplicate=[]

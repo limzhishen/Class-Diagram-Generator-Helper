@@ -4,17 +4,20 @@ from customtkinter.windows.widgets.font import CTkFont
 from component.TextRedirector import OutputRedirector
 
 class OutputComponent(CTkTextbox):
-    def __init__(self, master: any, width: int = 650, height: int = 200, corner_radius: int | None = None, border_width: int | None = None, border_spacing: int = 3, bg_color: str | Tuple[str, str] = "transparent", fg_color: str | Tuple[str, str] | None = None, border_color: str | Tuple[str, str] | None = None, text_color: str | None = None, scrollbar_button_color: str | Tuple[str, str] | None = None, scrollbar_button_hover_color: str | Tuple[str, str] | None = None, font: tuple | CTkFont | None = None, activate_scrollbars: bool = True, **kwargs):
+    def __init__(self, master: any, width: int = 550, height: int = 200, corner_radius: int | None = None, border_width: int | None = None, border_spacing: int = 3, bg_color: str | Tuple[str, str] = "transparent", fg_color: str | Tuple[str, str] | None = None, border_color: str | Tuple[str, str] | None = None, text_color: str | None = None, scrollbar_button_color: str | Tuple[str, str] | None = None, scrollbar_button_hover_color: str | Tuple[str, str] | None = None, font: tuple | CTkFont | None = None, activate_scrollbars: bool = True, **kwargs):
         super().__init__(master, width, height, corner_radius, border_width, border_spacing, bg_color, fg_color, border_color, text_color, scrollbar_button_color, scrollbar_button_hover_color, font, activate_scrollbars, **kwargs)
         #make output in Textbox
         sys.stdout = OutputRedirector(self, sys.stdout)
         self.textboxstate=False
+        # self.setState()
 
          #FOR OUTPUT Clean
     def getline(self):
         content=self.get(1.0,"end")
         line=content.count("\n")
         return (line) 
+    def cleanbox(self):
+        self.delete("1.0", "end")
 
     def cleanLine(self,num):
         content=self.get(1.0,"end")
