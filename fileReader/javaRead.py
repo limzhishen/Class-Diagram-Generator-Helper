@@ -57,12 +57,12 @@ class java_Read(Thread_File_Reader):
         self.logging.debug_yellow(str(thread_id)+str(class_manager.printout()))
         class_manager.write_file(thread_id)
 
-    def method_constructor(self,match:re.match,class_manager:classManger,classname):
+    def method_constructor(self,match,class_manager:classManger,classname):
         type=method_access_type_mapping.get(match.group(1))
         parameter=[info.strip() for info in match.group(2).split(",") if info!='']
         class_manager.add_method(classname,type,parameter)
         
-    def attribute_process(self,match:re.match,class_manager:classManger):
+    def attribute_process(self,match,class_manager:classManger):
         attribute_name=match.group(5)
         access_type=attributes_access_type_mapping.get( match.group(1),attributes_access_type.Nothing)
         type=match.group(4)
@@ -71,7 +71,7 @@ class java_Read(Thread_File_Reader):
 
         class_manager.add_attributes(attribute_name,type,access_type,other=other)
     
-    def method_process(self,match:re.match,class_manager:classManger):
+    def method_process(self,match,class_manager:classManger):
         method_name=match.group(4)
         # group_parameter=match.group(5)
         parameter=[info.strip() for info in match.group(5).split(",") if info!=""]
@@ -81,7 +81,7 @@ class java_Read(Thread_File_Reader):
         class_manager.add_method(method_name,access_type,parameter,return_type,type)
         
                
-    def class_process(self,match:re.match,class_manager:classManger):
+    def class_process(self,match,class_manager:classManger):
         class_name=match.group(2)
         type=class_type_mapping.get(match.group(1),class_type.Class)
         instance_info =match.group(3)

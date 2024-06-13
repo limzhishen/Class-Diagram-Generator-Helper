@@ -1,4 +1,4 @@
-from customtkinter import * 
+from customtkinter import *
 from fileReader.filePath import Filepath
 from component.OutputComponent import OutputComponent
 from fileReader.InterfaceReadFile import ReadFile
@@ -13,6 +13,7 @@ class ClassGenerator_startup(Application):
         super().__init__()
         self.geometry("700x600+500+600")
         self.selected=StringVar()
+        self.method_class=BooleanVar()
         self.processbox = OutputComponent(self)
         self.folder_textbox=CTkEntry(self,placeholder_text="File path ....",width=500)
         self.decoration()
@@ -22,19 +23,22 @@ class ClassGenerator_startup(Application):
         CTkLabel(self, text="Class Generator Helper", font=CTkFont(family="Times New Roman", size=36)).grid(row=0, columnspan=6, sticky='nsew',pady=15)
         
         # File Path
-        CTkLabel(self, text="Choose Folder", font=CTkFont(family="cursive", size=10)).grid(row=1, column=0, sticky='w')
-        self.folder_textbox.grid(row=2, column=0,columnspan=3)
+        CTkLabel(self, text="Choose Folder", font=CTkFont(family="cursive", size=10)).grid(row=1, column=0, sticky='w',pady=(10,10))
+        self.folder_textbox.grid(row=2, column=0,columnspan=4)
         CTkButton(self, text="Choose File", command=self.file_path,width=70).grid(row=2, column=5,padx=5)
         CTkButton(self, text="Choose Folder", command=self.folder_path,width=70).grid(row=2, column=6)
         
         # Processing file type (java python)
-        CTkLabel(self, text="Import File Type", font=CTkFont(family="cursive", size=10)).grid(row=3, column=0, sticky='w')
+        CTkLabel(self, text="Import File Type", font=CTkFont(family="cursive", size=10)).grid(row=3, column=0, sticky='w',pady=(10,10))
         CTkRadioButton(self, text="Java", variable=self.selected,value=".java").grid(row=4, column=0,sticky="w")
         CTkRadioButton(self, text="Python", variable=self.selected,value=".py").grid(row=4, column=1,sticky="w")
         #add More just copy add column and value and text
         
         # Start button
-        CTkButton(self, text="Start Process", command=self.start_process).grid(row=5, column=1,columnspan=2,sticky="w")
+        CTkButton(self, text="Start Process", command=self.start_process).grid(row=5, column=0,columnspan=4,padx=(0, 20),pady=(10,10))
+
+        #Method Class?
+        CTkSwitch(self, text="Method Without Class",variable=self.method_class,onvalue=True,offvalue=False).grid(row=5,column=4,columnspan=3)
         # CTkButton(self,text="Export",command=self.start_export).grid(row=5,column=4)
 
         # Output message
@@ -80,7 +84,7 @@ class ClassGenerator_startup(Application):
         File=Filepath(self.folder_textbox.get(),self.selected.get(),self.logging)
         print("File Done Import")
         #Interface
-        filereader=self.get_class(self.processbox,File.Full_path,self.logging)
+        filereader=self.get_class(self.processbox,File.Full_path,self.logging,self.method_class)
         filereader.process()
         #### File Migration#####
         self.logging.info_green("Starting Migration")
@@ -88,16 +92,18 @@ class ClassGenerator_startup(Application):
         migration_To_one(Temp_Save_Foldername,Processed_Data_Filename)
         print("Migration Done")
         self.logging.info_green("Succesfull Migration")
-        #### File Migration#####
+        # File Migration
 
-    def get_class(self,*argv)->ReadFile:
+    def get_class(self, *argv)->ReadFile:
         if self.selected.get()==".py":
             return python_Read(*argv)
         elif self.selected.get()==".java":
             return java_Read(*argv)
+        else:
+            raise BrokenPipeError("None Class")
             
 
 if __name__ == '__main__':
     app=ClassGenerator_startup()
-    set_appearance_mode("dark")
+    set_appearance_mode("dark") #type: ignore
     app.mainloop()

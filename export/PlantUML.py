@@ -1,4 +1,4 @@
-from pyUML import Graph, UMLClass
+# from pyUML import Graph, UMLClass
 from export.exportInterface import Export
 
 class plantUML(Export):

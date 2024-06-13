@@ -13,7 +13,7 @@ implements_pattern = r'implements\s+([\w, ]+)'
 java_method_pattern=(r"\s*(public|private|protected)\s*(static|final|synchronized|abstract)?\s*([\w<>[\]]+)\s+(\w+)\s*\(([^)]*)\)\s*\{?")
 java_attribute_pattern=r'\s*(public|private|protected)\s*(static|final|synchronized|abstract)?\s*(static|final|synchronized|abstract)?\s*([\w<>[\]]+)\s+(\w+)\s*(=\s*[^;]+)?\s*;'
 
-java_constructor_pattern = r'\s*(public|protected|private)?\s*{class_name}\s*\(([^)]*)\)\s*\{?'
+# java_constructor_pattern = r'\s*(public|protected|private)?\s*{class_name}\s*\(([^)]*)\)\s*\{?'
 def java_constructor_pattern(class_name):
     return (r'\s*(public|protected|private)?\s*{}\s*\(([^)]*)\)\s*\{{?'.format(class_name))
 

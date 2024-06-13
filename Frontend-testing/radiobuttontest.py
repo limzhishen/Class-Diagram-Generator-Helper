@@ -1,4 +1,5 @@
-from customtkinter import *
+#type: ignore
+from customtkinter import * 
 from tkinter import *
 
 def print_selection():

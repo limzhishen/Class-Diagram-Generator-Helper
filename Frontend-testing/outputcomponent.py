@@ -1,11 +1,11 @@
 
-from customtkinter import *
+import customtkinter as ck
  
-root = CTk()
+root = ck.CTk()
 root.geometry("300x300")
 root.title(" Q&A ")
  
-def delete_last_line(textbox:CTkTextbox):
+def delete_last_line(textbox:ck.CTkTextbox):
         content=textbox.get("1.0","end")
         line_count=content.count("\n")
         linecontent=textbox.get(float(line_count),"end")
@@ -25,16 +25,16 @@ def delete_last_line(textbox:CTkTextbox):
     
 
      
-l = CTkLabel(root,text = "What is 24 * 5 ? ")
-inputtxt = CTkTextbox(root, height = 100,
+l = ck.CTkLabel(root,text = "What is 24 * 5 ? ")
+inputtxt = ck.CTkTextbox(root, height = 100,
                 width = 300,
                 bg_color = "light yellow",)
  
-Output = CTkTextbox(root, height = 100, 
+Output = ck.CTkTextbox(root, height = 100, 
               width = 300, 
               bg_color = "light cyan")
  
-Display = CTkButton(root, height = 50,
+Display = ck.CTkButton(root, height = 50,
                  width = 50, 
                  text ="Show",
                  command = lambda:delete_last_line(Output))
