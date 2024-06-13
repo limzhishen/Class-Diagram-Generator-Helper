@@ -1,4 +1,4 @@
-from customtkinter import *
+from customtkinter import * 
 from fileReader.filePath import Filepath
 from component.OutputComponent import OutputComponent
 from fileReader.InterfaceReadFile import ReadFile
