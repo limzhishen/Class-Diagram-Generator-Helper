@@ -1,9 +1,9 @@
-from customtkinter import * 
+import customtkinter as ck
 from component.LoggingColorFormat import Changelogging
 
 
 #Create Main Window
-class Application(CTk):
+class Application(ck.CTk):
     def __init__(self):
         self.logging=Changelogging()
         super().__init__()
@@ -15,5 +15,5 @@ class Application(CTk):
 
 if __name__ == '__main__':
     app=Application()
-    set_appearance_mode("dark")
+    ck.set_appearance_mode("dark")
     app.mainloop()

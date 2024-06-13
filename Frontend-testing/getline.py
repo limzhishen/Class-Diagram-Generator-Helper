@@ -1,17 +1,17 @@
-from customtkinter import *
-root = CTk()
+import customtkinter as ck
+root = ck.CTk()
 root.geometry("300x300")
 root.title(" Q&A ")
-Output = CTkTextbox(root, height = 100, 
+Output = ck.CTkTextbox(root, height = 100, 
               width = 300, 
               bg_color = "light cyan")
  
-Refresh = CTkButton(root, height = 50,
+Refresh = ck.CTkButton(root, height = 50,
                  width = 50, 
                  text ="Refresh",
-                 command = lambda:refresh_line(line,"hello",Output))
+                 command=lambda: refresh_line(line, "message", Output)) #type:ignore
 
-def getline(textbox:CTkTextbox):
+def getline(textbox:ck.CTkTextbox):
         content=textbox.get(1.0,"end")
         line=content.count("\n")
         return (line) 
@@ -19,7 +19,7 @@ Output.insert("1.0","hhhhhhelo\n")
 line=getline(Output)
 print(line)
     
-def refresh_line(line,messange,textbox:CTkTextbox):
+def refresh_line(line,messange,textbox:ck.CTkTextbox):
         print("----------")
         print(line)
         textbox.delete(float(line),float(line+1))
@@ -32,7 +32,7 @@ def refresh_line(line,messange,textbox:CTkTextbox):
        
         cursor_end_newline(textbox)
         
-def cursor_end_newline(textbox:CTkTextbox):
+def cursor_end_newline(textbox:ck.CTkTextbox):
         content=textbox.get(1.0,"end")
         if not content.strip() or content[-2]=="\n":
             textbox.mark_set("insert","end")
@@ -42,5 +42,5 @@ def cursor_end_newline(textbox:CTkTextbox):
 
 Output.pack()
 Refresh.pack()
-set_appearance_mode("dark")
+ck.set_appearance_mode("dark")
 root.mainloop()

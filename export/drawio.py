@@ -6,11 +6,11 @@ from data.FolderRefresh import removeioFile,flush_Save_Folder
 from data.datatype import Temp_Export_Folder
 from export.drawioComponent.drawioMain import DrawIoMain
 
-
+#code-var-annotated
 class drawio_export(ExportThread):
     
     def __init__(self, output_textbox: OutputComponent, logging: Changelogging, max_worker: int = 3, removefile: bool = True):
-        super().__init__(output_textbox, logging, max_worker, removefile) 
+        super().__init__(output_textbox, logging, max_worker, removefile)
         self.num=0
         self.Allclassname=[]
         self.duplicate=[]

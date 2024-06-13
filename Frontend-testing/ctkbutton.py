@@ -1,4 +1,4 @@
-from customtkinter import *
+from customtkinter import CTkButton,CTk #type: ignore
 def button_event():
     print("button pressed")
 app=CTk()

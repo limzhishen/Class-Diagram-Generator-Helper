@@ -4,8 +4,8 @@ from pathlib import Path
 text = os.getcwd()
 filname="abc.py"
 text=os.path.join(text,filname)
-text=Path(text)
-text=str(text)
+jack=Path(text)
+text=str(jack)
 print(text)
 pattern =  r"([^\\]+)\\"
 

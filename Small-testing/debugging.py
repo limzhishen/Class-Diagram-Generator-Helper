@@ -16,7 +16,7 @@ class Filepath():
         count=0
         for file_path in Path(self.directory).rglob("*"):
             print("Processing file: %s", file_path)
-            if "\.git" in str(file_path) or "/.git" in str(file_path):
+            if "\\.git" in str(file_path) or "/.git" in str(file_path):
                 continue
             if file_path.is_file() and self.type in str(file_path):
                 count+=1

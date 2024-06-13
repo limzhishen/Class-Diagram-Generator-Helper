@@ -14,7 +14,7 @@ class Filepath():
     def traverse_directory(self):
         count=0
         for file_path in Path(self.directory).rglob("*"):
-            if "\.git" in str(file_path) or "/.git" in str(file_path):
+            if "\\.git" in str(file_path) or "/.git" in str(file_path):
                 continue
             if "__pycache__" in str(file_path):
                 continue

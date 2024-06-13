@@ -1,13 +1,14 @@
-from typing import Tuple
-from customtkinter import *
+from typing import Tuple,Any
+import customtkinter as ck
 from customtkinter.windows.widgets.font import CTkFont
 from component.TextRedirector import OutputRedirector
+import sys
 
-class OutputComponent(CTkTextbox):
-    def __init__(self, master: any, width: int = 550, height: int = 200, corner_radius: int | None = None, border_width: int | None = None, border_spacing: int = 3, bg_color: str | Tuple[str, str] = "transparent", fg_color: str | Tuple[str, str] | None = None, border_color: str | Tuple[str, str] | None = None, text_color: str | None = None, scrollbar_button_color: str | Tuple[str, str] | None = None, scrollbar_button_hover_color: str | Tuple[str, str] | None = None, font: tuple | CTkFont | None = None, activate_scrollbars: bool = True, **kwargs):
+class OutputComponent(ck.CTkTextbox):
+    def __init__(self, master: Any, width: int = 550, height: int = 200, corner_radius: int | None = None, border_width: int | None = None, border_spacing: int = 3, bg_color: str | Tuple[str, str] = "transparent", fg_color: str | Tuple[str, str] | None = None, border_color: str | Tuple[str, str] | None = None, text_color: str | None = None, scrollbar_button_color: str | Tuple[str, str] | None = None, scrollbar_button_hover_color: str | Tuple[str, str] | None = None, font: tuple | CTkFont | None = None, activate_scrollbars: bool = True, **kwargs):
         super().__init__(master, width, height, corner_radius, border_width, border_spacing, bg_color, fg_color, border_color, text_color, scrollbar_button_color, scrollbar_button_hover_color, font, activate_scrollbars, **kwargs)
         #make output in Textbox
-        sys.stdout = OutputRedirector(self, sys.stdout)
+        sys.stdout = OutputRedirector(self, sys.stdout) # type: ignore
         self.textboxstate=False
         # self.setState()
 
