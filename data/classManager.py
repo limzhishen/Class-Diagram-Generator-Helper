@@ -59,6 +59,7 @@ class classManger:
         }
         new_method_dict["name"]=name
         new_method_dict["access_type"]=access_type.value
+        parameter=self.cleaning(parameter)
         new_method_dict["parameter"]=parameter
         new_method_dict["return"]=return_type
         new_method_dict["type"]=type.value
@@ -70,6 +71,9 @@ class classManger:
         filename=match.group(1)[::-1]
         self.base_dict["filename"]=filename
         self.filename=filename
+
+    def cleaning(self, parameter):
+        return [value.replace('"', '') for value in parameter ]
 
     def write_file(self,thread_id):
         file_name="class_Thread_{}.txt".format(thread_id)

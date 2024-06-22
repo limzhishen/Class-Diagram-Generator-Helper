@@ -7,13 +7,15 @@ from data.classManager import classManger
 import os
 
 log=Changelogging()
-abc=java_Read(customtkinter.CTk(),{},log)
+# abc=java_Read(customtkinter.CTk(),{},log)
+abc=python_Read(customtkinter.CTk(),{},log)
 filename="User.java"
 path=os.getcwd()
 
 foldername="Testing-Java/Class"
 filepath=os.path.join(path,foldername)
 filepath=os.path.join(filepath,filename)
+filepath=r"C:\Users\zhish\Desktop\iPrice\class-Diagram-Helper\component\OutputComponent.py"
 log.debug_red(filepath)
 #Due to the posix will change \ to / , So i need to change
 pathfile=Path(filepath)

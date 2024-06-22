@@ -18,5 +18,5 @@ class ReadFile(ABC):
         #flush the save place 
         flush_Save_Folder(Temp_Save_Foldername)
     @abstractmethod
-    def process(self,path):
+    def process(self,thread=3):
         pass

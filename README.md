@@ -1,9 +1,11 @@
 # Class-Diagram-Generator-Helper
 This is a personal Interest Project
 
-## Requirement library
+## Prerequisite library
     -customtkinter
-    -mypy
+    -mypy [contributing] -not affect the code running
+Python 
+    -typing
 
 ### For the drawio Component
 If got the same Class name :

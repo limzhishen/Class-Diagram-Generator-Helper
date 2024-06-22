@@ -17,6 +17,8 @@ class ClassGenerator_startup(Application):
         self.processbox = OutputComponent(self)
         self.folder_textbox=CTkEntry(self,placeholder_text="File path ....",width=500)
         self.decoration()
+        self.thread_num=3
+        
 
     def decoration(self):
         # Head title
@@ -35,14 +37,18 @@ class ClassGenerator_startup(Application):
         #add More just copy add column and value and text
         
         # Start button
-        CTkButton(self, text="Start Process", command=self.start_process).grid(row=5, column=0,columnspan=4,padx=(0, 20),pady=(10,10))
+        CTkButton(self, text="Start Process", command=self.start_process).grid(row=5, column=1,columnspan=3,padx=(0, 20),pady=(10,10))
 
         #Method Class?
-        CTkSwitch(self, text="Method Without Class",variable=self.method_class,onvalue=True,offvalue=False).grid(row=5,column=4,columnspan=3)
+        CTkSwitch(self, text="Method Without Class",variable=self.method_class,onvalue=True,offvalue=False).grid(row=6,column=0,columnspan=1)
+
+        #Threading Num
+        CTkLabel(self,text="Thread num: ").grid(row=6,column=4,columnspan=2)
+        CTkEntry(self,width=30,placeholder_text=3).grid(row=6,column=6)
         # CTkButton(self,text="Export",command=self.start_export).grid(row=5,column=4)
 
         # Output message
-        self.processbox.grid(row=6, column=0,columnspan=6,sticky="w")
+        self.processbox.grid(row=7, column=0,columnspan=6,sticky="w")
 
         # Same row export type
 
@@ -85,7 +91,7 @@ class ClassGenerator_startup(Application):
         print("File Done Import")
         #Interface
         filereader=self.get_class(self.processbox,File.Full_path,self.logging,self.method_class)
-        filereader.process()
+        filereader.process(self.thread_num if self.thread_num is not None else 3)
         #### File Migration#####
         self.logging.info_green("Starting Migration")
         print("----Migration-----")
