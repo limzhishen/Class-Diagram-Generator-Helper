@@ -8,7 +8,7 @@ Y_SUBCOMPONENT=26
 Y_SUBLINE=8
 
 class DrawIoMain:
-    def __init__(self,line_dict,logging:Changelogging,thread_id,callback_getnum=None):
+    def __init__(self,line_dict,logging:Changelogging,thread_id,callback_getnum=None,callback_updateprocess=None,testing=False):
         self.y_axis=0
         self.filename=""
         self.name=""
@@ -22,6 +22,8 @@ class DrawIoMain:
         self.get_new_num=callback_getnum
         self.logging=logging
         self.thread_id=thread_id
+        self.update_process=callback_updateprocess
+        self.testing=testing
 
     def get_item_in_dict(self,line_dict):
         self.filename=line_dict["filename"]
@@ -86,9 +88,13 @@ class DrawIoMain:
             for class_extend in self.extend:
                 id=id+"_"+str(self.get_new_num())
                 self.logging.debug_blue(f"Extend Line: Source {id} Target {class_extend}")
+                if not self.testing:
+                    self.update_process(f"Extend Line: Source {id} Target {class_extend}")
                 self.write_file(arrow_drawio(id,arrow_type.extend,self.name,class_extend).get_back())
         if self.implement!=[]:
             for class_implement in self.implement:
                 id=id+"_"+str(self.get_new_num())
                 self.logging.debug_blue(f"Implement Line: Source{id} Target{class_implement}")
+                if not self.testing:
+                    self.update_process(f"Implement Line: Source{id} Target{class_implement}")
                 self.write_file(arrow_drawio(id,arrow_type.implement,self.name,class_implement).get_back())

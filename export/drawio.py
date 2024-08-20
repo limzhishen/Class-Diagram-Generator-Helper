@@ -9,8 +9,8 @@ from export.drawioComponent.drawioMain import DrawIoMain
 #code-var-annotated
 class drawio_export(ExportThread):
     
-    def __init__(self, output_textbox: OutputComponent, logging: Changelogging, max_worker: int = 3, removefile: bool = True):
-        super().__init__(output_textbox, logging, max_worker, removefile)
+    def __init__(self, output_textbox: OutputComponent, logging: Changelogging, max_worker: int = 3, removefile: bool = True,testing:bool =False):
+        super().__init__(output_textbox, logging, max_worker, removefile,testing)
         self.num=0
         self.Allclassname=[]
         self.duplicate=[]
@@ -32,7 +32,7 @@ class drawio_export(ExportThread):
 
 
     def process(self,line,thread_id):
-        drawio=DrawIoMain(self.get_dict(line),self.logging,thread_id,callback_getnum=self.get_new_num)
+        drawio=DrawIoMain(self.get_dict(line),self.logging,thread_id,callback_getnum=self.get_new_num,callback_updateprocess=self.update_progress,testing=self.testing)
         #Duplicate Class name will make draw io not working need override and save the status
         self.Deduplicate(drawio.name)
         self.check_extend(drawio)
@@ -46,9 +46,13 @@ class drawio_export(ExportThread):
         drawio.add_details(id,drawio.method,callback=drawio.add_method)
         if self.duplicateStatus:
             self.logging.debug_red("Duplicate Class: "+drawio.filename+"  "+drawio.name)
+            if not self.testing:
+                self.update_progress(str(self.num)+" :Duplicate Class: "+drawio.filename+"  "+drawio.name)
             drawio.add_one_subtext("Duplicate class name: "+drawio.filename+" "+drawio.name,id)
         if self.extend_duplicate:
             self.logging.debug_red("extend Class: "+drawio.filename+"  "+drawio.name)
+            if not self.testing:
+                self.update_progress(str(self.num)+" :extend Class: "+drawio.filename+"  "+drawio.name)
             drawio.add_one_subtext("Extended Duplicate class name: "+drawio.filename+" "+drawio.name ,id)
         #Because the extends only direct to the class, so every of the same class will directed to the first one
         drawio.add_arrow(id)

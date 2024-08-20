@@ -6,11 +6,12 @@ import json,os
 
 
 class Export(ABC):
-    def __init__(self,output_textbox:OutputComponent,logging:Changelogging,max_worker:int=3,removefile:bool=True):
+    def __init__(self,output_textbox:OutputComponent,logging:Changelogging,max_worker:int=3,removefile:bool=True,testing:bool =False):
         self.output_textbox=output_textbox
         self.logging=logging
         self.removefile=removefile
         self.max_worker=max_worker
+        self.testing=testing
     
     def export(self):
         if check_Available(Processed_Data_Filename):
