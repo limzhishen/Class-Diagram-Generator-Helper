@@ -11,7 +11,6 @@ class OutputComponent(ck.CTkTextbox):
         sys.stdout = OutputRedirector(self, sys.stdout) # type: ignore
 
         #Make disable writing
-        self.textboxstate=False
         self.setState(False)
 
          #FOR OUTPUT Clean
@@ -20,7 +19,9 @@ class OutputComponent(ck.CTkTextbox):
         line=content.count("\n")
         return (line) 
     def cleanbox(self):
+        self.setState(True)
         self.delete("1.0", "end")
+        self.setState(False)
 
     def cleanLine(self,num):
         content=self.get(1.0,"end")
@@ -71,8 +72,6 @@ class OutputComponent(ck.CTkTextbox):
 
     def setState(self,state:bool):
         if(state):
-            self.textboxstate=True
             self._textbox.configure(state="normal")
         else:
-            self.textboxstate=False
             self._textbox.configure(state="disabled")

@@ -13,7 +13,7 @@ from export.drawioComponent.drawioMigration import Iomigration
 class ClassGenerator_startup(Application):
     def __init__(self):
         super().__init__()
-        self.geometry("700x600+500+600")
+        self.geometry("700x600+700+300")
         self.selected=StringVar()
         self.selected_export=StringVar(value="drawio")
         self.method_class=BooleanVar()
@@ -71,15 +71,18 @@ class ClassGenerator_startup(Application):
         # Same row export type
 
     def checkExport(self):
+        self.processbox.setState(True)
+       
         if refreshExport():
             self.export_status=True
+            print("Founded File, Export Enable")
         else:
             self.export_status=False
+            print("File is undetected, Export Disable")
         self.decoration_export()
+        self.processbox.setState(False)
 
     def start_export(self):
-        #Make Process box writeable
-        self.processbox.setState(True)
         try:
             self.processbox.cleanbox()
             self.logging.info_green("Export Start")
@@ -88,27 +91,34 @@ class ClassGenerator_startup(Application):
             file_thread.start()
         except Exception as e:
             print(e)
-        self.processbox.setState(False)
+        
 
     def export_process_thread(self):
+        #Make Process box writeable
+        self.processbox.setState(True)
         #thread main try catch will not catch exception thread
         try:
             print("Export Starting....")
             export_File=self.get_export_Type(self.processbox,self.logging,self.thread_num,True)
             print("Type="+self.selected_export.get())
             export_File.export()
-            print("----Migration-----")
+            print("\t\t----Migration-----")
             if self.selected_export.get()=="drawio":
                 Iomigration()
                 print("Migration Done")
                 print("\tYou Can Open the Class Diagram File")
-                print ("----Tips For Arrange----")
+                print ("\t\t----Tips For Arrange----")
                 print("Arrange->Layout->Horizontal Flow")
                 print("Arrange->Layout->Vertical Flow")
-            self.checkExport()
+            
         except Exception as e:
+            self.processbox.setState(True)
             print("Export is Fail!! raise issue in https://github.com/limzhishen/Class-Diagram-Generator-Helper/issues")
             print(e)
+            self.processbox.setState(False)
+        finally:
+            self.checkExport()
+            self.processbox.setState(False)
             
 
     #Add Export here
@@ -130,10 +140,9 @@ class ClassGenerator_startup(Application):
             self.folder_textbox.delete("0", "end")
             self.folder_textbox.insert("0",text)
         
-
+    #fileReadable
     def start_process(self):
-        #Make textbox writeable
-        self.processbox.setState(True)
+        
         try:
             self.processbox.cleanbox()
             self.check_status()
@@ -142,17 +151,20 @@ class ClassGenerator_startup(Application):
             file_thread=Thread(target=self.file_process_thread)
             file_thread.start()
         except Exception as e:
+            self.processbox.setState(True)
             print(e)
-        self.checkExport()
-        self.processbox.setState(False)
+            self.processbox.setState(False)
+        
 
     def check_status(self):
         if self.selected.get() is None or self.selected.get()=="":
-            raise Exception("Have not choose Anything")
+            raise Exception("Have not choose File Type yet")
         if self.folder_textbox.get() is None or self.folder_textbox.get()=="":
             raise Exception("have not insert file path yet")
         
     def file_process_thread(self):
+        #Make textbox writeable
+        self.processbox.setState(True)
         print("---Scanning File----")
         File=Filepath(self.folder_textbox.get(),self.selected.get(),self.logging)
         print("File Done Import")
@@ -165,8 +177,9 @@ class ClassGenerator_startup(Application):
         print("----Migration-----")
         migration_To_one(Temp_Save_Foldername,Processed_Data_Filename)
         print("Migration Done")
+        self.checkExport()
         self.logging.info_green("Succesfull Migration")
-        # File Migration
+        self.processbox.setState(False)
 
     #Add Reader here
     def get_class(self, *argv)->ReadFile:

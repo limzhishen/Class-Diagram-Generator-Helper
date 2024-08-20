@@ -1,6 +1,6 @@
 import customtkinter as ck
 from component.LoggingColorFormat import Changelogging
-
+import os
 
 #Create Main Window
 class Application(ck.CTk):
@@ -8,7 +8,8 @@ class Application(ck.CTk):
         self.logging=Changelogging()
         super().__init__()
         self.title("Class Generator Helper")
-        self.iconbitmap("Component/Icon.ico")
+        self.iconbitmap(os.path.join(os.path.dirname(__file__), 'Icon.ico'))
+
 
 
 
