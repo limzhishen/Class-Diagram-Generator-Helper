@@ -75,11 +75,12 @@ class Thread_File_Reader(ReadFile):
     def update_progress(self,title_line):
         title=f"Scanning File ({self.num}/{self.totalfile})"
         self.output_textbox.refresh_line(title_line,title)
-        if(len(self.scan_details)>5):
+        if(len(self.scan_details)>self.progress_line):
             self.scan_details.pop(0)
             self.output_textbox.refresh_detail(self.progress_line,self.scan_details[-1])
         else:
             print(self.scan_details[-1])
+
 
     @abstractmethod
     def process_logic(self,detail,thread_id,class_manager):

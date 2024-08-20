@@ -1,6 +1,14 @@
 from data.datatype import Temp_Save_Foldername, Processed_Data_Filename,drawIo_Save_name,drawIO_backup_name
 import os,time
 
+def refreshExport():
+    current_directory = os.getcwd()
+    file_path=os.path.join(current_directory,Processed_Data_Filename)
+    if os.path.exists(file_path):
+        return True
+    else:
+        return False
+    
 def flush_Save_Folder(folder):
     current_directory = os.getcwd()
     folder_name = folder

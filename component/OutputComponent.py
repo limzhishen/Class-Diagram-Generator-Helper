@@ -9,8 +9,10 @@ class OutputComponent(ck.CTkTextbox):
         super().__init__(master, width, height, corner_radius, border_width, border_spacing, bg_color, fg_color, border_color, text_color, scrollbar_button_color, scrollbar_button_hover_color, font, activate_scrollbars, **kwargs)
         #make output in Textbox
         sys.stdout = OutputRedirector(self, sys.stdout) # type: ignore
+
+        #Make disable writing
         self.textboxstate=False
-        # self.setState()
+        self.setState(False)
 
          #FOR OUTPUT Clean
     def getline(self):
@@ -26,20 +28,20 @@ class OutputComponent(ck.CTkTextbox):
         self.delete(float(line-num),"end")
         self.cursor_end_newline()       
     
-    def refresh_line(self,line,messange):
+    def refresh_line(self,line,message):
         self.delete(float(line),float(line+1))
         if(self.get(1.0,"end").count("\n")<line):
                 self.insert(float(line),text="\n")
-                self.insert(float(line),text=messange+"\n")
+                self.insert(float(line),text=message+"\n")
         else:
-                self.insert(float(line),text=messange+"\n")
+                self.insert(float(line),text=message+"\n")
         self.cursor_end_newline()
         
-    def refresh_detail(self,count,messange):
+    def refresh_detail(self,count,message):
         content=self.get("1.0","end")
         line_count=content.count("\n")
         self.delete(float(line_count-count),float(line_count-count+1))
-        self.insert(float(line_count-1),messange+"\n")
+        self.insert(float(line_count-1),message+"\n")
         self.cursor_end_newline()
 
     def cursor_end_newline(self):
@@ -67,10 +69,10 @@ class OutputComponent(ck.CTkTextbox):
             self.delete(float(line_count-1),"end")
             self.insert(index=float(line_count),text="\n")
 
-    def setState(self):
-        if(self.textboxstate):
-            self.textboxstate=False
-            self.textbox.configure(state="normal")
-        else:
+    def setState(self,state:bool):
+        if(state):
             self.textboxstate=True
-            self.textbox.configure(state="disabled")
+            self._textbox.configure(state="normal")
+        else:
+            self.textboxstate=False
+            self._textbox.configure(state="disabled")
