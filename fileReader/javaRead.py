@@ -26,7 +26,7 @@ class java_Read(Thread_File_Reader):
                         class_manager=classManger()
                     class_manager.add_Filename(index)
                     self.class_process(match_class,class_manager)
-                    class_name=match_class.group(2)
+                    class_name=match_class.group(3)
                     class_found = True
                     content=''
                     continue
@@ -75,16 +75,18 @@ class java_Read(Thread_File_Reader):
         method_name=match.group(4)
         # group_parameter=match.group(5)
         parameter=[info.strip() for info in match.group(5).split(",") if info!=""]
-        access_type=method_access_type_mapping.get(match.group(1))
+        access_type=method_access_type_mapping.get(match.group(1),method_access_type.Public)
         return_type=match.group(3)
         type=method_type_mapping.get(match.group(2),method_type.Nothing)
         class_manager.add_method(method_name,access_type,parameter,return_type,type)
         
                
     def class_process(self,match,class_manager:classManger):
-        class_name=match.group(2)
+        class_name=match.group(3)
         type=class_type_mapping.get(match.group(1),class_type.Class)
-        instance_info =match.group(3)
+        if match.group(2) == class_type.Interface.value:
+            type = class_type.Interface
+        instance_info =match.group(4)
         extends = []
         implements = []
         if instance_info is not None:

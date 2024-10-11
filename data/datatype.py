@@ -7,10 +7,11 @@ python_class_pattern=(r'\s*class\s+(.*?)\s*(\((.*?)\))?\s*:\s*(.*)')
 python_method_pattern=(r'\s*def\s+(.*?)\s*\((.*)\)\s*.*:')
 python_attributes_pattern=(r'\s*self\.(\w+)\b')
 #java
-java_class_pattern=(r"(public|protected|private|abstract|final)?\s*class\s+(\w+)\s*(extends\s+\w+|implements\s+[\w\s,]+)?")
+# java_class_pattern=(r"(public|protected|private|abstract|final)?\s*class\s+(\w+)\s*(extends\s+\w+|implements\s+[\w\s,]+)?")
+java_class_pattern = r"(public|protected|private|abstract|final)?\s*(class|interface)\s+(\w+)\s*(extends\s+\w+|implements\s+[\w\s,]+)?"
 extends_pattern = r'extends\s+([\w, ]+)'
 implements_pattern = r'implements\s+([\w, ]+)'
-java_method_pattern=(r"\s*(public|private|protected)\s*(static|final|synchronized|abstract)?\s*([\w<>[\]]+)\s+(\w+)\s*\(([^)]*)\)\s*\{?")
+java_method_pattern=(r"\s*(public|private|protected)?\s*(static|final|synchronized|abstract)?\s*([\w<>[\]]+)\s+(\w+)\s*\(([^)]*)\)\s*\{?")
 java_attribute_pattern=r'\s*(public|private|protected)\s*(static|final|synchronized|abstract)?\s*(static|final|synchronized|abstract)?\s*([\w<>[\]]+)\s+(\w+)\s*(=\s*[^;]+)?\s*;'
 
 # java_constructor_pattern = r'\s*(public|protected|private)?\s*{class_name}\s*\(([^)]*)\)\s*\{?'
