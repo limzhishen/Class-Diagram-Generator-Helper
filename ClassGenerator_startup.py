@@ -129,7 +129,7 @@ class ClassGenerator_startup(Application):
             raise BrokenPipeError("None Class")
 
     def file_path(self):
-        text=filedialog.askopenfile()
+        text=filedialog.askopenfilename()
         if text:
             self.folder_textbox.delete("0", "end")
             self.folder_textbox.insert("0",text)
@@ -139,10 +139,9 @@ class ClassGenerator_startup(Application):
         if text:
             self.folder_textbox.delete("0", "end")
             self.folder_textbox.insert("0",text)
-        
+
     #fileReadable
     def start_process(self):
-        
         try:
             self.processbox.cleanbox()
             self.check_status()
