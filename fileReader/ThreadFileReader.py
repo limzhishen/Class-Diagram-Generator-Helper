@@ -51,23 +51,22 @@ class Thread_File_Reader(ReadFile):
             self.output_textbox.cleanLine(len(self.scan_details))
         print("All Task Have been done")
 
-    def process_file(self,path,thread_id,title_line):
+    def process_file(self, path, thread_id, title_line):
         while not path.empty():
-            class_manager=classManger()
-            detail=path.get()
-            if(len(detail)>25):
-                detail_messange=detail[23:]+"..."
+            detail = path.get()
+            if len(detail) > 25:
+                detail_message = detail[23:] + "..."
             else:
-                detail_messange=detail+" "*(25-len(detail))
+                detail_message = detail + " " * (25 - len(detail))
             with self.lock:
-                self.logging.debug_red(str(thread_id)+"_"+str(class_manager))
                 if not self.testing:
-                    scan_messange="Thread {}: Scanning '{}'".format(thread_id,detail_messange)
-                    self.scan_details.append(scan_messange)
-                    self.num +=1
+                    scan_message = f"Thread {thread_id}: Scanning '{detail_message}'"
+                    self.scan_details.append(scan_message)
+                    self.num += 1
                     self.update_progress(title_line)
 
-            self.process_logic(detail,thread_id,class_manager)
+            # Let process_logic handle class_manager creation per class
+            self.process_logic(detail, thread_id)
             path.task_done()
 
 
@@ -83,5 +82,5 @@ class Thread_File_Reader(ReadFile):
 
 
     @abstractmethod
-    def process_logic(self,detail,thread_id,class_manager):
+    def process_logic(self,detail,thread_id):
         pass

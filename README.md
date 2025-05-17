@@ -30,6 +30,7 @@ If have same class name better folder by folder export that will help easily to 
 # Support programming language  
     - Python (Multi-Thread default(3) )
     - Java (Multi-Thread default(3)) 
+    - C# (Multi-Thread default(3))  (On Testing)
 
 # Export type
 - Draw Io (since can be easily configure but meet the repeat problem may will solve when i lack of brain)
@@ -37,6 +38,7 @@ If have same class name better folder by folder export that will help easily to 
 ## MultiThread Support (5 woker almost save 10 plus times)
 - Python Read
 - Java Read
+- C# Read
 - Draw Io export (On Beta Testing)
 
 ### Create Reason (For newbie)

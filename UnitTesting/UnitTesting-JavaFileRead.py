@@ -13,7 +13,7 @@ from fileReader.filePath import Filepath
 from component.OutputComponent import OutputComponent
 from fileReader.pythonRead import python_Read
 
-filename="Testing-Java"
+filename="Testing-Java\testing.java"
 path=os.getcwd()
 filepath=os.path.join(path,filename)
 changelogging=Changelogging()
