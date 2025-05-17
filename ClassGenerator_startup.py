@@ -3,6 +3,8 @@ from fileReader.filePath import Filepath
 from component.OutputComponent import OutputComponent
 from fileReader.InterfaceReadFile import ReadFile
 from fileReader.pythonRead import python_Read
+from fileReader.csharpRead import csharp_Read
+from fileReader.newpythonRead import New_python_Read
 from fileReader.javaRead import java_Read
 from threading import Thread
 from component.ApplicationClass import Application
@@ -42,6 +44,7 @@ class ClassGenerator_startup(Application):
         CTkLabel(self, text="Import File Type", font=CTkFont(family="cursive", size=10)).grid(row=3, column=0, sticky='w',pady=(10,10))
         CTkRadioButton(self, text="Java", variable=self.selected,value=".java").grid(row=4, column=0,sticky="w")
         CTkRadioButton(self, text="Python", variable=self.selected,value=".py").grid(row=4, column=1,sticky="w")
+        CTkRadioButton(self, text="C#", variable=self.selected,value=".cs").grid(row=4, column=2,sticky="w")
         #add More just copy add column and value and text
         
         # Start button
@@ -183,9 +186,12 @@ class ClassGenerator_startup(Application):
     #Add Reader here
     def get_class(self, *argv)->ReadFile:
         if self.selected.get()==".py":
-            return python_Read(*argv)
+            # return python_Read(*argv)
+            return New_python_Read(*argv)
         elif self.selected.get()==".java":
             return java_Read(*argv)
+        elif self.selected.get()==".cs":
+            return csharp_Read(*argv)
         else:
             raise BrokenPipeError("None Class")
             

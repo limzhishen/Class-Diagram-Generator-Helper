@@ -18,6 +18,10 @@ java_attribute_pattern=r'\s*(public|private|protected)\s*(static|final|synchroni
 def java_constructor_pattern(class_name):
     return (r'\s*(public|protected|private)?\s*{}\s*\(([^)]*)\)\s*\{{?'.format(class_name))
 
+# Regex patterns for C# parsing
+csharp_class_pattern = r'\s*(public|private|protected|internal)?\s*(abstract|static|sealed)?\s*class\s+(\w+)\s*(?:\:\s*([\w\s,<>]+))?\s*\{?'
+csharp_method_pattern = r'\s*(public|private|protected|internal)?\s*(static)?\s*([\w<>\[\]]+)\s+(\w+)\s*\(([^)]*)\)\s*\{?'
+csharp_property_pattern = r'\s*(public|private|protected|internal)?\s*(static)?\s*([\w<>\[\]\?]+)\s+(\w+)\s*{[^}]*}'
 
 Temp_Save_Foldername="TempThreadFile"
 Processed_Data_Filename="Combineded_Data.txt"

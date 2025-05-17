@@ -1,0 +1,205 @@
+<mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+<mxCell id="csharp_Read" value="csharp_Read" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                        <mxGeometry x="330" y="280" width="160" height="164" as="geometry" />
+                    </mxCell>
+               <mxCell id="csharp_Read_1" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="csharp_Read">
+                        <mxGeometry y="0" width="160" height="8" as="geometry" />
+                    </mxCell>
+                     <mxCell id="csharp_Read_4" value="+ __init__ (output_textbox, Full_path, logging, methodwithoutclass, progress_line, testing)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="csharp_Read" vertex="1">
+                    <mxGeometry y="60" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="csharp_Read_7" value="+ process_logic (index, thread_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="csharp_Read" vertex="1">
+                    <mxGeometry y="86" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="csharp_Read_9" value="+ write_file (thread_id, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="csharp_Read" vertex="1">
+                    <mxGeometry y="112" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="csharp_Read_13" value="+ class_process (match, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="csharp_Read" vertex="1">
+                    <mxGeometry y="138" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="csharp_Read_16" value="+ method_process (match, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="csharp_Read" vertex="1">
+                    <mxGeometry y="164" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="csharp_Read_19" value="+ property_process (match, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="csharp_Read" vertex="1">
+                    <mxGeometry y="190" width="160" height="26" as="geometry" />
+                </mxCell>
+                <mxCell id="arrow_csharp_Read_21" value="" style="endArrow=block;html=1;rounded=0;endFill=0;edgeStyle=orthogonalEdgeStyle;dashed=0" parent="1" target="Thread_File_Reader" edge="1" source="csharp_Read">
+    <mxGeometry width="50" height="50" relative="1" as="geometry" />
+</mxCell><mxCell id="Filepath" value="Filepath" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                        <mxGeometry x="330" y="280" width="160" height="164" as="geometry" />
+                    </mxCell>
+                <mxCell id="Filepath_26" value="+ directory" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Filepath" vertex="1">
+                    <mxGeometry y="26" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="Filepath_28" value="+ type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Filepath" vertex="1">
+                    <mxGeometry y="52" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="Filepath_31" value="+ Full_path" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Filepath" vertex="1">
+                    <mxGeometry y="78" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="Filepath_35" value="+ logging" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Filepath" vertex="1">
+                    <mxGeometry y="104" width="160" height="26" as="geometry" />
+                </mxCell>
+                <mxCell id="Filepath_38" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="Filepath">
+                        <mxGeometry y="104" width="160" height="8" as="geometry" />
+                    </mxCell>
+                     <mxCell id="Filepath_40" value="+ __init__ (directory, type, logging)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Filepath" vertex="1">
+                    <mxGeometry y="164" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="Filepath_43" value="+ traverse_directory ()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Filepath" vertex="1">
+                    <mxGeometry y="190" width="160" height="26" as="geometry" />
+                </mxCell>
+                <mxCell id="java_Read" value="java_Read" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                        <mxGeometry x="330" y="280" width="160" height="164" as="geometry" />
+                    </mxCell>
+               <mxCell id="java_Read_2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="java_Read">
+                        <mxGeometry y="0" width="160" height="8" as="geometry" />
+                    </mxCell>
+                     <mxCell id="java_Read_5" value="+ __init__ (output_textbox, Full_path, logging, methodwithoutclass, progress_line, testing)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="java_Read" vertex="1">
+                    <mxGeometry y="60" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="java_Read_6" value="+ process_logic (index, thread_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="java_Read" vertex="1">
+                    <mxGeometry y="86" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="java_Read_10" value="+ write_file (thread_id, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="java_Read" vertex="1">
+                    <mxGeometry y="112" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="java_Read_12" value="+ method_constructor (match, class_manager, classname)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="java_Read" vertex="1">
+                    <mxGeometry y="138" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="java_Read_15" value="+ attribute_process (match, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="java_Read" vertex="1">
+                    <mxGeometry y="164" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="java_Read_18" value="+ method_process (match, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="java_Read" vertex="1">
+                    <mxGeometry y="190" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="java_Read_22" value="+ class_process (match, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="java_Read" vertex="1">
+                    <mxGeometry y="216" width="160" height="26" as="geometry" />
+                </mxCell>
+                <mxCell id="arrow_java_Read_24" value="" style="endArrow=block;html=1;rounded=0;endFill=0;edgeStyle=orthogonalEdgeStyle;dashed=0" parent="1" target="Thread_File_Reader" edge="1" source="java_Read">
+    <mxGeometry width="50" height="50" relative="1" as="geometry" />
+</mxCell><mxCell id="New_python_Read" value="New_python_Read" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                        <mxGeometry x="330" y="280" width="160" height="164" as="geometry" />
+                    </mxCell>
+               <mxCell id="New_python_Read_30" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="New_python_Read">
+                        <mxGeometry y="0" width="160" height="8" as="geometry" />
+                    </mxCell>
+                     <mxCell id="New_python_Read_32" value="+ __init__ (output_textbox, Full_path, logging, methodwithoutclass, progress_line, testing)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="New_python_Read" vertex="1">
+                    <mxGeometry y="60" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="New_python_Read_34" value="+ process_logic (index, thread_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="New_python_Read" vertex="1">
+                    <mxGeometry y="86" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="New_python_Read_37" value="+ write_file (thread_id, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="New_python_Read" vertex="1">
+                    <mxGeometry y="112" width="160" height="26" as="geometry" />
+                </mxCell>
+                <mxCell id="arrow_New_python_Read_39" value="" style="endArrow=block;html=1;rounded=0;endFill=0;edgeStyle=orthogonalEdgeStyle;dashed=0" parent="1" target="Thread_File_Reader" edge="1" source="New_python_Read">
+    <mxGeometry width="50" height="50" relative="1" as="geometry" />
+</mxCell><mxCell id="python_Read" value="python_Read" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                        <mxGeometry x="330" y="280" width="160" height="164" as="geometry" />
+                    </mxCell>
+               <mxCell id="python_Read_44" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="python_Read">
+                        <mxGeometry y="0" width="160" height="8" as="geometry" />
+                    </mxCell>
+                     <mxCell id="python_Read_46" value="+ __init__ (output_textbox, Full_path, logging, methodwithoutclass, progress_line, testing)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="python_Read" vertex="1">
+                    <mxGeometry y="60" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="python_Read_49" value="+ process_logic (index, thread_id, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="python_Read" vertex="1">
+                    <mxGeometry y="86" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="python_Read_51" value="+ write_file (thread_id, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="python_Read" vertex="1">
+                    <mxGeometry y="112" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="python_Read_53" value="+ class_process (match, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="python_Read" vertex="1">
+                    <mxGeometry y="138" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="python_Read_55" value="+ method_process (match, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="python_Read" vertex="1">
+                    <mxGeometry y="164" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="python_Read_56" value="+ attributes_process (match, class_manager)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="python_Read" vertex="1">
+                    <mxGeometry y="190" width="160" height="26" as="geometry" />
+                </mxCell>
+                <mxCell id="arrow_python_Read_59" value="" style="endArrow=block;html=1;rounded=0;endFill=0;edgeStyle=orthogonalEdgeStyle;dashed=0" parent="1" target="Thread_File_Reader" edge="1" source="python_Read">
+    <mxGeometry width="50" height="50" relative="1" as="geometry" />
+</mxCell><mxCell id="Thread_File_Reader" value="Thread_File_Reader" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                        <mxGeometry x="330" y="280" width="160" height="164" as="geometry" />
+                    </mxCell>
+                <mxCell id="Thread_File_Reader_3" value="+ lock" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Thread_File_Reader" vertex="1">
+                    <mxGeometry y="26" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="Thread_File_Reader_8" value="+ totalfile" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Thread_File_Reader" vertex="1">
+                    <mxGeometry y="52" width="160" height="26" as="geometry" />
+                </mxCell>
+                <mxCell id="Thread_File_Reader_11" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="Thread_File_Reader">
+                        <mxGeometry y="52" width="160" height="8" as="geometry" />
+                    </mxCell>
+                     <mxCell id="Thread_File_Reader_14" value="+ __init__ (output_textbox, Full_path, logging, methodwithoutclass, progress_line, testing)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Thread_File_Reader" vertex="1">
+                    <mxGeometry y="112" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="Thread_File_Reader_17" value="+ getTask (Full_path)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Thread_File_Reader" vertex="1">
+                    <mxGeometry y="138" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="Thread_File_Reader_20" value="+ process (thread)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Thread_File_Reader" vertex="1">
+                    <mxGeometry y="164" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="Thread_File_Reader_23" value="+ start_thread (thread, path, title_line)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Thread_File_Reader" vertex="1">
+                    <mxGeometry y="190" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="Thread_File_Reader_25" value="+ process_file (path, thread_id, title_line)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Thread_File_Reader" vertex="1">
+                    <mxGeometry y="216" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="Thread_File_Reader_27" value="+ update_progress (title_line)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Thread_File_Reader" vertex="1">
+                    <mxGeometry y="242" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="Thread_File_Reader_29" value="+ process_logic (detail, thread_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="Thread_File_Reader" vertex="1">
+                    <mxGeometry y="268" width="160" height="26" as="geometry" />
+                </mxCell>
+                <mxCell id="arrow_Thread_File_Reader_33" value="" style="endArrow=block;html=1;rounded=0;endFill=0;edgeStyle=orthogonalEdgeStyle;dashed=0" parent="1" target="ReadFile" edge="1" source="Thread_File_Reader">
+    <mxGeometry width="50" height="50" relative="1" as="geometry" />
+</mxCell><mxCell id="ReadFile" value="&lt;&lt;Abstract&gt;&gt;&#xa;ReadFile" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                        <mxGeometry x="330" y="280" width="160" height="164" as="geometry" />
+                    </mxCell>
+                <mxCell id="ReadFile_36" value="+ output_textbox" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="ReadFile" vertex="1">
+                    <mxGeometry y="26" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="ReadFile_41" value="+ Full_path" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="ReadFile" vertex="1">
+                    <mxGeometry y="52" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="ReadFile_42" value="+ num" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="ReadFile" vertex="1">
+                    <mxGeometry y="78" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="ReadFile_45" value="+ totalfile" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="ReadFile" vertex="1">
+                    <mxGeometry y="104" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="ReadFile_47" value="+ scan_details" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="ReadFile" vertex="1">
+                    <mxGeometry y="130" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="ReadFile_48" value="+ logging" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="ReadFile" vertex="1">
+                    <mxGeometry y="156" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="ReadFile_50" value="+ methodwithoutclass" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="ReadFile" vertex="1">
+                    <mxGeometry y="182" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="ReadFile_52" value="+ progress_line" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="ReadFile" vertex="1">
+                    <mxGeometry y="208" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="ReadFile_54" value="+ testing" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="ReadFile" vertex="1">
+                    <mxGeometry y="234" width="160" height="26" as="geometry" />
+                </mxCell>
+                <mxCell id="ReadFile_57" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="ReadFile">
+                        <mxGeometry y="234" width="160" height="8" as="geometry" />
+                    </mxCell>
+                     <mxCell id="ReadFile_58" value="+ __init__ (output_textbox, Full_path, logging, methodwithoutclass, progress_line, testing)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="ReadFile" vertex="1">
+                    <mxGeometry y="294" width="160" height="26" as="geometry" />
+                </mxCell>
+                 <mxCell id="ReadFile_60" value="+ process (thread)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#000000;" parent="ReadFile" vertex="1">
+                    <mxGeometry y="320" width="160" height="26" as="geometry" />
+                </mxCell>
+                <mxCell id="arrow_ReadFile_61" value="" style="endArrow=block;html=1;rounded=0;endFill=0;edgeStyle=orthogonalEdgeStyle;dashed=0" parent="1" target="ABC" edge="1" source="ReadFile">
+    <mxGeometry width="50" height="50" relative="1" as="geometry" />
+</mxCell>
+      </root>
+</mxGraphModel>
